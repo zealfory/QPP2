@@ -567,15 +567,15 @@ public class Process_baseline_2 {
 			for(int i=0;i<predictedAP.length;i++){
 				if(predictedAP[i][0]>0.4){
 					labe_3++;
-					labe_3_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0])/predictedAP[i][0];
+					labe_3_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
-				else if(predictedAP[i][0]>0.2){
+				if(predictedAP[i][0]>0.2&&predictedAP[i][0]<=0.4){
 					labe_2++;
-					labe_2_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0])/predictedAP[i][0];
+					labe_2_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
-				else{
+				if(predictedAP[i][0]<=0.2){
 					labe_1++;
-					labe_1_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0])/predictedAP[i][0];
+					labe_1_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
 			}
 			//计算相对误差
@@ -617,6 +617,74 @@ public class Process_baseline_2 {
 		return relativeError;
 	}
 	
+	/**
+	 * 批量产生heart_scale_test_x_regression_AP_value文件对应的相对误差信息（by Zoey）<br>
+	 * @throws IOException 
+	 * 
+	 */
+	public static void compute_relativeError_batch() throws IOException{
+		//批量产生准确率文件,并计算预测方法在该运行结果上的平均相对误差信息
+		BufferedReader buffReader=null;
+		String tempLine=null;
+		String input=null;
+		String runId=null;
+		String packageName=null;
+		String fileName=null;
+		double[][][] relative_error=null;//存放一个运行结果对应的相对误差
+		ArrayList<double[][]> array_relative_error=null;
+		double[][] relativeError=null;
+		
+		//遍历每个运行结果,针对每个运行结果,计算平均相对误差信息并存入文件。
+		input="./robustTrack2004/runId.txt";
+		buffReader=new BufferedReader(new FileReader(input));
+		while((tempLine=buffReader.readLine())!=null){
+			runId=tempLine.split("\\.")[1];
+			packageName="robustTrack2004/"+runId;
+			array_relative_error=new ArrayList<double[][]>();//创建array_relative_error对象
+			//每个runId下有5个heart_scale_test_x_regression_AP_value文件,相应地产生5组相对误差信息
+			for(int i=0;i<5;i++){
+				fileName="heart_scale_test_"+i+"_regression_AP_value";
+				//针对一个heart_scale_test_x_regression_AP_value文件,计算相对误差信息
+				relativeError=compute_relative_error(fileName,packageName);
+				array_relative_error.add(relativeError);
+			}
+			//将array_relative_error中的数据存入relative_error数组中,其中relative_error[array_relative_error.size()]存放平均值
+			relative_error=new double[array_relative_error.size()+1][][];
+			for(int i=0;i<array_relative_error.size();i++){
+				relative_error[i]=array_relative_error.get(i);
+			}
+			
+			/************************************/
+			//创建relative_error[relative_error.length-1]并给其赋值
+			relative_error[relative_error.length-1]=new double[relative_error[0].length][relative_error[0][0].length];
+			for(int i=0;i<relative_error.length-1;i++){
+				for(int j=0;j<relative_error[i].length;j++){
+					for(int k=0;k<relative_error[i][j].length;k++){
+						//relative_error[relative.length-1][j][k]中存入平均值,这里提前乘以1.0/(relative_error.length-1)
+						relative_error[relative_error.length-1][j][k]+=relative_error[i][j][k]/(relative_error.length-1);
+					}
+				}
+			}
+			//将relative_error[relative_error.length-1]存入文件中
+			BufferedWriter buffWriter=null;
+			input="./"+packageName+"/regression_relativeError";
+			buffWriter=new BufferedWriter(new FileWriter(input));
+			for(int i=0;i<relative_error[relative_error.length-1].length;i++){
+				tempLine="";//置tempLine为空字符串
+				for(int j=0;j<relative_error[relative_error.length-1][i].length;j++){
+					//tempLine=tempLine+relative_error[accu.length-1][i][j]+"\t";
+					//对于平均误差,保留小数点后3位
+					tempLine=tempLine+String.format("%.3f",relative_error[relative_error.length-1][i][j])+"\t";
+				}
+				//去除tempLine末尾的\t
+				tempLine=tempLine.trim();
+				buffWriter.write(tempLine+"\n");
+			}
+			buffWriter.close();
+		}
+		buffReader.close();
+		System.out.println("批量产生heart_scale_test_x_regression_AP_value文件对应的相对误差信息,已完成..");
+	}
 	
 	/**
 	 * 根据线性回归文件,和heart_scale_test_x文件,产生对应的预测类别文件。<br>
@@ -634,6 +702,10 @@ public class Process_baseline_2 {
 		
 		//批量产生heart_scale_test_x_regression文件对应的准确率信息
 		compute_accuracy_batch();
+		
+		//批量产生heart_scale_test_x_regression_AP_value文件对应的相对误差信息
+		compute_relativeError_batch();		
+		
 		
 	}
 	
