@@ -508,7 +508,7 @@ public class Process_baseline_2 {
 	 * 针对一个heart_scale_test_x_regression_AP_value文件,计算相对误差信息(by Zoey)
 	 * @throws IOException 
 	 */
-	public static double[][] compute_relative_error(String fileName,String packageName) throws IOException{
+	public static double[][] compute_absolute_error(String fileName,String packageName) throws IOException{
 		//将input文件存入predictedAP数组
 		BufferedReader buffReader=null;
 		String input=null;
@@ -545,11 +545,11 @@ public class Process_baseline_2 {
 		/**************************/
 		//计算每个预测方法的AP预测相对误差,并存入relativeError数组中,预测方法共有7个
 		int labe_1=0;
-		double labe_1_relative_error=0.0;
+		double labe_1_absolute_error=0.0;
 		int labe_2=0;
-		double labe_2_relative_error=0.0;
+		double labe_2_absolute_error=0.0;
 		int labe_3=0;
-		double labe_3_relative_error=0.0;
+		double labe_3_absolute_error=0.0;
 		/**
 		 * relativeError数组的格式为:<br>
 		 *         sD2 wIG sMV nQC c c2 C4
@@ -560,38 +560,38 @@ public class Process_baseline_2 {
 		 * (hard+easy)
 		 * 
 		 */
-		double[][] relativeError=new double[5][7];
+		double[][] absoluteError=new double[5][7];
 		
 		//预测算法共有7个,k_method为预测算法的编号(从0开始编号)
 		for(int k_method=0;k_method<7;k_method++){
 			for(int i=0;i<predictedAP.length;i++){
 				if(predictedAP[i][0]>0.4){
 					labe_3++;
-					labe_3_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
+					labe_3_absolute_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
 				if(predictedAP[i][0]>0.2&&predictedAP[i][0]<=0.4){
 					labe_2++;
-					labe_2_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
+					labe_2_absolute_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
 				if(predictedAP[i][0]<=0.2){
 					labe_1++;
-					labe_1_relative_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
+					labe_1_absolute_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
 			}
 			//计算相对误差
-			relativeError[0][k_method]=(labe_1_relative_error+labe_2_relative_error+labe_3_relative_error)/(labe_1+labe_2+labe_3);
-			relativeError[1][k_method]=labe_1_relative_error/labe_1;
-			relativeError[2][k_method]=labe_2_relative_error/labe_2;
-			relativeError[3][k_method]=labe_3_relative_error/labe_3;
-			relativeError[4][k_method]=(labe_1_relative_error+labe_3_relative_error)/(labe_1+labe_3);
+			absoluteError[0][k_method]=(labe_1_absolute_error+labe_2_absolute_error+labe_3_absolute_error)/(labe_1+labe_2+labe_3);
+			absoluteError[1][k_method]=labe_1_absolute_error/labe_1;
+			absoluteError[2][k_method]=labe_2_absolute_error/labe_2;
+			absoluteError[3][k_method]=labe_3_absolute_error/labe_3;
+			absoluteError[4][k_method]=(labe_1_absolute_error+labe_3_absolute_error)/(labe_1+labe_3);
 			//重置labe_x变量
 			labe_1=0;
 			labe_2=0;
 			labe_3=0;
 			//重置labe_x_relative_error变量
-			labe_1_relative_error=0.0;
-			labe_2_relative_error=0.0;
-			labe_3_relative_error=0.0;
+			labe_1_absolute_error=0.0;
+			labe_2_absolute_error=0.0;
+			labe_3_absolute_error=0.0;
 			
 		}
 		
@@ -599,30 +599,30 @@ public class Process_baseline_2 {
 		//将relativeError数组中的数据存入文件中
 		BufferedWriter buffWriter=null;
 		
-		input="./"+packageName+"/"+fileName+"_relative_error";
+		input="./"+packageName+"/"+fileName+"_absolute_error";
 		buffWriter=new BufferedWriter(new FileWriter(input));
-		for(int i=0;i<relativeError.length;i++){
+		for(int i=0;i<absoluteError.length;i++){
 			tempLine="";//重置tempLine
-			for(int j=0;j<relativeError[i].length;j++){
-				tempLine=tempLine+relativeError[i][j]+"\t";
+			for(int j=0;j<absoluteError[i].length;j++){
+				tempLine=tempLine+absoluteError[i][j]+"\t";
 			}
 			//去除tempLine末尾的\t
 			tempLine=tempLine.trim();
 			buffWriter.write(tempLine+"\n");
 		}
 		buffWriter.close();
-		System.out.println("针对一个heart_scale_test_x_regression_AP_value文件,计算相对误差信息并存入文件,已完成..");
+		System.out.println("针对一个heart_scale_test_x_regression_AP_value文件,计算绝对误差信息并存入文件,已完成..");
 		
 		//返回relativeError数组
-		return relativeError;
+		return absoluteError;
 	}
 	
 	/**
-	 * 批量产生heart_scale_test_x_regression_AP_value文件对应的相对误差信息（by Zoey）<br>
+	 * 批量产生heart_scale_test_x_regression_AP_value文件对应的绝对误差信息（by Zoey）<br>
 	 * @throws IOException 
 	 * 
 	 */
-	public static void compute_relativeError_batch() throws IOException{
+	public static void compute_absoluteError_batch() throws IOException{
 		//批量产生准确率文件,并计算预测方法在该运行结果上的平均相对误差信息
 		BufferedReader buffReader=null;
 		String tempLine=null;
@@ -630,9 +630,9 @@ public class Process_baseline_2 {
 		String runId=null;
 		String packageName=null;
 		String fileName=null;
-		double[][][] relative_error=null;//存放一个运行结果对应的相对误差
-		ArrayList<double[][]> array_relative_error=null;
-		double[][] relativeError=null;
+		double[][][] absolute_error=null;//存放一个运行结果对应的相对误差
+		ArrayList<double[][]> array_absolute_error=null;
+		double[][] absoluteError=null;
 		
 		//遍历每个运行结果,针对每个运行结果,计算平均相对误差信息并存入文件。
 		input="./robustTrack2004/runId.txt";
@@ -640,41 +640,41 @@ public class Process_baseline_2 {
 		while((tempLine=buffReader.readLine())!=null){
 			runId=tempLine.split("\\.")[1];
 			packageName="robustTrack2004/"+runId;
-			array_relative_error=new ArrayList<double[][]>();//创建array_relative_error对象
+			array_absolute_error=new ArrayList<double[][]>();//创建array_relative_error对象
 			//每个runId下有5个heart_scale_test_x_regression_AP_value文件,相应地产生5组相对误差信息
 			for(int i=0;i<5;i++){
 				fileName="heart_scale_test_"+i+"_regression_AP_value";
 				//针对一个heart_scale_test_x_regression_AP_value文件,计算相对误差信息
-				relativeError=compute_relative_error(fileName,packageName);
-				array_relative_error.add(relativeError);
+				absoluteError=compute_absolute_error(fileName,packageName);
+				array_absolute_error.add(absoluteError);
 			}
 			//将array_relative_error中的数据存入relative_error数组中,其中relative_error[array_relative_error.size()]存放平均值
-			relative_error=new double[array_relative_error.size()+1][][];
-			for(int i=0;i<array_relative_error.size();i++){
-				relative_error[i]=array_relative_error.get(i);
+			absolute_error=new double[array_absolute_error.size()+1][][];
+			for(int i=0;i<array_absolute_error.size();i++){
+				absolute_error[i]=array_absolute_error.get(i);
 			}
 			
 			/************************************/
 			//创建relative_error[relative_error.length-1]并给其赋值
-			relative_error[relative_error.length-1]=new double[relative_error[0].length][relative_error[0][0].length];
-			for(int i=0;i<relative_error.length-1;i++){
-				for(int j=0;j<relative_error[i].length;j++){
-					for(int k=0;k<relative_error[i][j].length;k++){
+			absolute_error[absolute_error.length-1]=new double[absolute_error[0].length][absolute_error[0][0].length];
+			for(int i=0;i<absolute_error.length-1;i++){
+				for(int j=0;j<absolute_error[i].length;j++){
+					for(int k=0;k<absolute_error[i][j].length;k++){
 						//relative_error[relative.length-1][j][k]中存入平均值,这里提前乘以1.0/(relative_error.length-1)
-						relative_error[relative_error.length-1][j][k]+=relative_error[i][j][k]/(relative_error.length-1);
+						absolute_error[absolute_error.length-1][j][k]+=absolute_error[i][j][k]/(absolute_error.length-1);
 					}
 				}
 			}
 			//将relative_error[relative_error.length-1]存入文件中
 			BufferedWriter buffWriter=null;
-			input="./"+packageName+"/regression_relativeError";
+			input="./"+packageName+"/regression_absoluteError";
 			buffWriter=new BufferedWriter(new FileWriter(input));
-			for(int i=0;i<relative_error[relative_error.length-1].length;i++){
+			for(int i=0;i<absolute_error[absolute_error.length-1].length;i++){
 				tempLine="";//置tempLine为空字符串
-				for(int j=0;j<relative_error[relative_error.length-1][i].length;j++){
+				for(int j=0;j<absolute_error[absolute_error.length-1][i].length;j++){
 					//tempLine=tempLine+relative_error[accu.length-1][i][j]+"\t";
 					//对于平均误差,保留小数点后3位
-					tempLine=tempLine+String.format("%.3f",relative_error[relative_error.length-1][i][j])+"\t";
+					tempLine=tempLine+String.format("%.3f",absolute_error[absolute_error.length-1][i][j])+"\t";
 				}
 				//去除tempLine末尾的\t
 				tempLine=tempLine.trim();
@@ -683,7 +683,7 @@ public class Process_baseline_2 {
 			buffWriter.close();
 		}
 		buffReader.close();
-		System.out.println("批量产生heart_scale_test_x_regression_AP_value文件对应的相对误差信息,已完成..");
+		System.out.println("批量产生heart_scale_test_x_regression_AP_value文件对应的绝对误差信息,已完成..");
 	}
 	
 	/**
@@ -703,8 +703,8 @@ public class Process_baseline_2 {
 		//批量产生heart_scale_test_x_regression文件对应的准确率信息
 		compute_accuracy_batch();
 		
-		//批量产生heart_scale_test_x_regression_AP_value文件对应的相对误差信息
-		compute_relativeError_batch();		
+		//批量产生heart_scale_test_x_regression_AP_value文件对应的绝对误差信息
+		compute_absoluteError_batch();		
 		
 		
 	}
