@@ -1,0 +1,91 @@
+0、Organization: apl04rsTDNfw
+支持向量机的准确率:
+overall: accuracy=0.4699591836734694
+hard: accuracy=0.6678620571035433
+medium: accuracy=0.22829774284882648
+easy: accuracy=0.5235164835164834
+(hard+easy): accuracy=0.6052855274629468
+0、Organization: fub04TDNge
+支持向量机的准确率:
+overall: accuracy=0.5053877551020409
+hard: accuracy=0.6083982683982684
+medium: accuracy=0.40850103199174403
+easy: accuracy=0.5184099955771783
+(hard+easy): accuracy=0.5597809211661204
+0、Organization: humR04t5e1
+支持向量机的准确率:
+overall: accuracy=0.5382857142857143
+hard: accuracy=0.6025928457507405
+medium: accuracy=0.5852795031055901
+easy: accuracy=0.42153846153846153
+(hard+easy): accuracy=0.5333520074696546
+0、Organization: icl04pos2f
+支持向量机的准确率:
+overall: accuracy=0.6224489795918368
+hard: accuracy=0.8703641082684463
+medium: accuracy=0.3138888888888889
+easy: accuracy=0.24740259740259737
+(hard+easy): accuracy=0.7507121091679915
+0、Organization: JuruTitDes
+支持向量机的准确率:
+overall: accuracy=0.4741224489795918
+hard: accuracy=0.6521936758893281
+medium: accuracy=0.32887254901960783
+easy: accuracy=0.37025641025641026
+(hard+easy): accuracy=0.5413750954927424
+0、Organization: mpi04r07
+支持向量机的准确率:
+overall: accuracy=0.6586938775510205
+hard: accuracy=0.9611220564780936
+medium: accuracy=0.1422595704948646
+easy: accuracy=0.0
+(hard+easy): accuracy=0.8234712983493472
+0、Organization: NLPR04NcA
+支持向量机的准确率:
+overall: accuracy=0.5303673469387755
+hard: accuracy=0.7695859213250517
+medium: accuracy=0.35464285714285715
+easy: accuracy=0.3499639249639249
+(hard+easy): accuracy=0.6179252390611418
+0、Organization: pircRB04td2
+支持向量机的准确率:
+overall: accuracy=0.5422857142857144
+hard: accuracy=0.7421212121212122
+medium: accuracy=0.22762964160022983
+easy: accuracy=0.6530627705627705
+(hard+easy): accuracy=0.6842507949125596
+0、Organization: polyudp5
+支持向量机的准确率:
+overall: accuracy=0.5257142857142857
+hard: accuracy=0.9531443466927337
+medium: accuracy=0.02
+easy: accuracy=0.14278221778221778
+(hard+easy): accuracy=0.7164219114219115
+0、Organization: SABIR04BA
+支持向量机的准确率:
+overall: accuracy=0.5343673469387755
+hard: accuracy=0.6093434343434343
+medium: accuracy=0.48735294117647054
+easy: accuracy=0.47519230769230775
+(hard+easy): accuracy=0.5580936876216762
+0、Organization: uogRobLWR10
+支持向量机的准确率:
+overall: accuracy=0.517795918367347
+hard: accuracy=0.6961779448621555
+medium: accuracy=0.0
+easy: accuracy=0.6872056953979151
+(hard+easy): accuracy=0.6936218752008225
+0、Organization: vtumlong436
+支持向量机的准确率:
+overall: accuracy=0.5299591836734694
+hard: accuracy=0.7763305322128852
+medium: accuracy=0.2815151515151515
+easy: accuracy=0.5796245421245422
+(hard+easy): accuracy=0.6844322344322344
+0、Organization: wdoqla1
+支持向量机的准确率:
+overall: accuracy=0.5020408163265306
+hard: accuracy=0.7234121535723366
+medium: accuracy=0.30158730158730157
+easy: accuracy=0.45475113122171945
+(hard+easy): accuracy=0.6048412698412697

@@ -569,11 +569,11 @@ public class Process_baseline_2 {
 					labe_3++;
 					labe_3_absolute_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
-				if(predictedAP[i][0]>0.2&&predictedAP[i][0]<=0.4){
+				else if(predictedAP[i][0]>0.2&&predictedAP[i][0]<=0.4){
 					labe_2++;
 					labe_2_absolute_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}
-				if(predictedAP[i][0]<=0.2){
+				else{
 					labe_1++;
 					labe_1_absolute_error+=Math.abs(predictedAP[i][1+k_method]-predictedAP[i][0]);
 				}

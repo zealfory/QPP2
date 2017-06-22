@@ -1,0 +1,741 @@
+0、Organization: apl04rsTDNfw
+支持向量机的准确率:
+overall: accuracy=0.4699591836734694
+hard: accuracy=0.6678620571035433
+medium: accuracy=0.22829774284882648
+easy: accuracy=0.5235164835164834
+(hard+easy): accuracy=0.6052855274629468
+
+SD2的准确率:
+overall: accuracy=0.46184738955823296
+hard: accuracy_1=0.375
+medium: accuracy_2=0.5647058823529412
+easy: accuracy_3=0.4473684210526316
+(hard+easy): accuracy_5=0.40853658536585363
+
+WIG的准确率:
+overall: accuracy=0.4497991967871486
+hard: accuracy_1=0.375
+medium: accuracy_2=0.5411764705882353
+easy: accuracy_3=0.4342105263157895
+(hard+easy): accuracy_5=0.4024390243902439
+
+SMV的准确率:
+overall: accuracy=0.46184738955823296
+hard: accuracy_1=0.375
+medium: accuracy_2=0.5411764705882353
+easy: accuracy_3=0.47368421052631576
+(hard+easy): accuracy_5=0.42073170731707316
+
+NQC的准确率:
+overall: accuracy=0.4457831325301205
+hard: accuracy_1=0.3409090909090909
+medium: accuracy_2=0.5294117647058824
+easy: accuracy_3=0.47368421052631576
+(hard+easy): accuracy_5=0.4024390243902439
+
+C的准确率:
+overall: accuracy=0.46184738955823296
+hard: accuracy_1=0.38636363636363635
+medium: accuracy_2=0.5529411764705883
+easy: accuracy_3=0.4473684210526316
+(hard+easy): accuracy_5=0.4146341463414634
+
+C2的准确率:
+overall: accuracy=0.4819277108433735
+hard: accuracy_1=0.36363636363636365
+medium: accuracy_2=0.5882352941176471
+easy: accuracy_3=0.5
+(hard+easy): accuracy_5=0.4268292682926829
+
+C4的准确率:
+overall: accuracy=0.4738955823293173
+hard: accuracy_1=0.36363636363636365
+medium: accuracy_2=0.5647058823529412
+easy: accuracy_3=0.5
+(hard+easy): accuracy_5=0.4268292682926829
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: fub04TDNge
+支持向量机的准确率:
+overall: accuracy=0.5053877551020409
+hard: accuracy=0.6083982683982684
+medium: accuracy=0.40850103199174403
+easy: accuracy=0.5184099955771783
+(hard+easy): accuracy=0.5597809211661204
+
+SD2的准确率:
+overall: accuracy=0.5140562248995983
+hard: accuracy_1=0.47368421052631576
+medium: accuracy_2=0.6046511627906976
+easy: accuracy_3=0.45977011494252873
+(hard+easy): accuracy_5=0.4662576687116564
+
+WIG的准确率:
+overall: accuracy=0.5180722891566265
+hard: accuracy_1=0.47368421052631576
+medium: accuracy_2=0.6046511627906976
+easy: accuracy_3=0.47126436781609193
+(hard+easy): accuracy_5=0.4723926380368098
+
+SMV的准确率:
+overall: accuracy=0.4899598393574297
+hard: accuracy_1=0.4473684210526316
+medium: accuracy_2=0.5465116279069767
+easy: accuracy_3=0.47126436781609193
+(hard+easy): accuracy_5=0.4601226993865031
+
+NQC的准确率:
+overall: accuracy=0.4779116465863454
+hard: accuracy_1=0.40789473684210525
+medium: accuracy_2=0.5348837209302325
+easy: accuracy_3=0.4827586206896552
+(hard+easy): accuracy_5=0.44785276073619634
+
+C的准确率:
+overall: accuracy=0.5140562248995983
+hard: accuracy_1=0.47368421052631576
+medium: accuracy_2=0.5930232558139535
+easy: accuracy_3=0.47126436781609193
+(hard+easy): accuracy_5=0.4723926380368098
+
+C2的准确率:
+overall: accuracy=0.5140562248995983
+hard: accuracy_1=0.4342105263157895
+medium: accuracy_2=0.5930232558139535
+easy: accuracy_3=0.5057471264367817
+(hard+easy): accuracy_5=0.4723926380368098
+
+C4的准确率:
+overall: accuracy=0.5020080321285141
+hard: accuracy_1=0.40789473684210525
+medium: accuracy_2=0.5813953488372093
+easy: accuracy_3=0.5057471264367817
+(hard+easy): accuracy_5=0.4601226993865031
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: humR04t5e1
+支持向量机的准确率:
+overall: accuracy=0.5382857142857143
+hard: accuracy=0.6025928457507405
+medium: accuracy=0.5852795031055901
+easy: accuracy=0.42153846153846153
+(hard+easy): accuracy=0.5333520074696546
+
+SD2的准确率:
+overall: accuracy=0.4538152610441767
+hard: accuracy_1=0.39805825242718446
+medium: accuracy_2=0.5402298850574713
+easy: accuracy_3=0.423728813559322
+(hard+easy): accuracy_5=0.4074074074074074
+
+WIG的准确率:
+overall: accuracy=0.5461847389558233
+hard: accuracy_1=0.46601941747572817
+medium: accuracy_2=0.632183908045977
+easy: accuracy_3=0.559322033898305
+(hard+easy): accuracy_5=0.5
+
+SMV的准确率:
+overall: accuracy=0.5461847389558233
+hard: accuracy_1=0.46601941747572817
+medium: accuracy_2=0.632183908045977
+easy: accuracy_3=0.559322033898305
+(hard+easy): accuracy_5=0.5
+
+NQC的准确率:
+overall: accuracy=0.4899598393574297
+hard: accuracy_1=0.4077669902912621
+medium: accuracy_2=0.5517241379310345
+easy: accuracy_3=0.5423728813559322
+(hard+easy): accuracy_5=0.4567901234567901
+
+C的准确率:
+overall: accuracy=0.5582329317269076
+hard: accuracy_1=0.46601941747572817
+medium: accuracy_2=0.6551724137931034
+easy: accuracy_3=0.576271186440678
+(hard+easy): accuracy_5=0.5061728395061729
+
+C2的准确率:
+overall: accuracy=0.5180722891566265
+hard: accuracy_1=0.4174757281553398
+medium: accuracy_2=0.5977011494252874
+easy: accuracy_3=0.576271186440678
+(hard+easy): accuracy_5=0.47530864197530864
+
+C4的准确率:
+overall: accuracy=0.5140562248995983
+hard: accuracy_1=0.4174757281553398
+medium: accuracy_2=0.5862068965517241
+easy: accuracy_3=0.576271186440678
+(hard+easy): accuracy_5=0.47530864197530864
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: icl04pos2f
+支持向量机的准确率:
+overall: accuracy=0.6224489795918368
+hard: accuracy=0.8703641082684463
+medium: accuracy=0.3138888888888889
+easy: accuracy=0.24740259740259737
+(hard+easy): accuracy=0.7507121091679915
+
+SD2的准确率:
+overall: accuracy=0.46586345381526106
+hard: accuracy_1=0.36428571428571427
+medium: accuracy_2=0.5138888888888888
+easy: accuracy_3=0.7567567567567568
+(hard+easy): accuracy_5=0.4463276836158192
+
+WIG的准确率:
+overall: accuracy=0.42168674698795183
+hard: accuracy_1=0.37142857142857144
+medium: accuracy_2=0.4583333333333333
+easy: accuracy_3=0.5405405405405406
+(hard+easy): accuracy_5=0.4067796610169492
+
+SMV的准确率:
+overall: accuracy=0.4578313253012048
+hard: accuracy_1=0.37857142857142856
+medium: accuracy_2=0.5277777777777778
+easy: accuracy_3=0.6216216216216216
+(hard+easy): accuracy_5=0.4293785310734463
+
+NQC的准确率:
+overall: accuracy=0.4859437751004016
+hard: accuracy_1=0.39285714285714285
+medium: accuracy_2=0.5833333333333334
+easy: accuracy_3=0.6486486486486487
+(hard+easy): accuracy_5=0.4463276836158192
+
+C的准确率:
+overall: accuracy=0.4497991967871486
+hard: accuracy_1=0.37857142857142856
+medium: accuracy_2=0.5
+easy: accuracy_3=0.6216216216216216
+(hard+easy): accuracy_5=0.4293785310734463
+
+C2的准确率:
+overall: accuracy=0.46184738955823296
+hard: accuracy_1=0.38571428571428573
+medium: accuracy_2=0.5138888888888888
+easy: accuracy_3=0.6486486486486487
+(hard+easy): accuracy_5=0.4406779661016949
+
+C4的准确率:
+overall: accuracy=0.4819277108433735
+hard: accuracy_1=0.39285714285714285
+medium: accuracy_2=0.5694444444444444
+easy: accuracy_3=0.6486486486486487
+(hard+easy): accuracy_5=0.4463276836158192
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: JuruTitDes
+支持向量机的准确率:
+overall: accuracy=0.4741224489795918
+hard: accuracy=0.6521936758893281
+medium: accuracy=0.32887254901960783
+easy: accuracy=0.37025641025641026
+(hard+easy): accuracy=0.5413750954927424
+
+SD2的准确率:
+overall: accuracy=0.4738955823293173
+hard: accuracy_1=0.44036697247706424
+medium: accuracy_2=0.5443037974683544
+easy: accuracy_3=0.4426229508196721
+(hard+easy): accuracy_5=0.4411764705882353
+
+WIG的准确率:
+overall: accuracy=0.5060240963855421
+hard: accuracy_1=0.47706422018348627
+medium: accuracy_2=0.5949367088607594
+easy: accuracy_3=0.4426229508196721
+(hard+easy): accuracy_5=0.4647058823529412
+
+SMV的准确率:
+overall: accuracy=0.4578313253012048
+hard: accuracy_1=0.41284403669724773
+medium: accuracy_2=0.5316455696202531
+easy: accuracy_3=0.4426229508196721
+(hard+easy): accuracy_5=0.4235294117647059
+
+NQC的准确率:
+overall: accuracy=0.4779116465863454
+hard: accuracy_1=0.42201834862385323
+medium: accuracy_2=0.569620253164557
+easy: accuracy_3=0.45901639344262296
+(hard+easy): accuracy_5=0.43529411764705883
+
+C的准确率:
+overall: accuracy=0.4979919678714859
+hard: accuracy_1=0.47706422018348627
+medium: accuracy_2=0.5822784810126582
+easy: accuracy_3=0.4262295081967213
+(hard+easy): accuracy_5=0.4588235294117647
+
+C2的准确率:
+overall: accuracy=0.5020080321285141
+hard: accuracy_1=0.47706422018348627
+medium: accuracy_2=0.569620253164557
+easy: accuracy_3=0.45901639344262296
+(hard+easy): accuracy_5=0.47058823529411764
+
+C4的准确率:
+overall: accuracy=0.5301204819277109
+hard: accuracy_1=0.45871559633027525
+medium: accuracy_2=0.620253164556962
+easy: accuracy_3=0.5409836065573771
+(hard+easy): accuracy_5=0.48823529411764705
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: mpi04r07
+支持向量机的准确率:
+overall: accuracy=0.6586938775510205
+hard: accuracy=0.9611220564780936
+medium: accuracy=0.1422595704948646
+easy: accuracy=0.0
+(hard+easy): accuracy=0.8234712983493472
+
+SD2的准确率:
+overall: accuracy=0.3453815261044177
+hard: accuracy_1=0.3006134969325153
+medium: accuracy_2=0.3898305084745763
+easy: accuracy_3=0.5185185185185185
+(hard+easy): accuracy_5=0.33157894736842103
+
+WIG的准确率:
+overall: accuracy=0.36947791164658633
+hard: accuracy_1=0.31901840490797545
+medium: accuracy_2=0.4745762711864407
+easy: accuracy_3=0.4444444444444444
+(hard+easy): accuracy_5=0.3368421052631579
+
+SMV的准确率:
+overall: accuracy=0.3614457831325301
+hard: accuracy_1=0.3067484662576687
+medium: accuracy_2=0.423728813559322
+easy: accuracy_3=0.5555555555555556
+(hard+easy): accuracy_5=0.34210526315789475
+
+NQC的准确率:
+overall: accuracy=0.3654618473895582
+hard: accuracy_1=0.31901840490797545
+medium: accuracy_2=0.423728813559322
+easy: accuracy_3=0.5185185185185185
+(hard+easy): accuracy_5=0.3473684210526316
+
+C的准确率:
+overall: accuracy=0.3614457831325301
+hard: accuracy_1=0.31901840490797545
+medium: accuracy_2=0.4406779661016949
+easy: accuracy_3=0.4444444444444444
+(hard+easy): accuracy_5=0.3368421052631579
+
+C2的准确率:
+overall: accuracy=0.3453815261044177
+hard: accuracy_1=0.3067484662576687
+medium: accuracy_2=0.3898305084745763
+easy: accuracy_3=0.48148148148148145
+(hard+easy): accuracy_5=0.33157894736842103
+
+C4的准确率:
+overall: accuracy=0.3493975903614458
+hard: accuracy_1=0.3067484662576687
+medium: accuracy_2=0.3898305084745763
+easy: accuracy_3=0.5185185185185185
+(hard+easy): accuracy_5=0.3368421052631579
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: NLPR04NcA
+支持向量机的准确率:
+overall: accuracy=0.5303673469387755
+hard: accuracy=0.7695859213250517
+medium: accuracy=0.35464285714285715
+easy: accuracy=0.3499639249639249
+(hard+easy): accuracy=0.6179252390611418
+
+SD2的准确率:
+overall: accuracy=0.4779116465863454
+hard: accuracy_1=0.42857142857142855
+medium: accuracy_2=0.5609756097560976
+easy: accuracy_3=0.45161290322580644
+(hard+easy): accuracy_5=0.437125748502994
+
+WIG的准确率:
+overall: accuracy=0.5341365461847389
+hard: accuracy_1=0.4666666666666667
+medium: accuracy_2=0.5853658536585366
+easy: accuracy_3=0.5806451612903226
+(hard+easy): accuracy_5=0.5089820359281437
+
+SMV的准确率:
+overall: accuracy=0.5421686746987951
+hard: accuracy_1=0.44761904761904764
+medium: accuracy_2=0.6097560975609756
+easy: accuracy_3=0.6129032258064516
+(hard+easy): accuracy_5=0.5089820359281437
+
+NQC的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.45714285714285713
+medium: accuracy_2=0.5975609756097561
+easy: accuracy_3=0.5967741935483871
+(hard+easy): accuracy_5=0.5089820359281437
+
+C的准确率:
+overall: accuracy=0.5461847389558233
+hard: accuracy_1=0.47619047619047616
+medium: accuracy_2=0.6097560975609756
+easy: accuracy_3=0.5806451612903226
+(hard+easy): accuracy_5=0.5149700598802395
+
+C2的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.45714285714285713
+medium: accuracy_2=0.5975609756097561
+easy: accuracy_3=0.5967741935483871
+(hard+easy): accuracy_5=0.5089820359281437
+
+C4的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.45714285714285713
+medium: accuracy_2=0.5975609756097561
+easy: accuracy_3=0.5967741935483871
+(hard+easy): accuracy_5=0.5089820359281437
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: pircRB04td2
+支持向量机的准确率:
+overall: accuracy=0.5422857142857144
+hard: accuracy=0.7421212121212122
+medium: accuracy=0.22762964160022983
+easy: accuracy=0.6530627705627705
+(hard+easy): accuracy=0.6842507949125596
+
+SD2的准确率:
+overall: accuracy=0.5421686746987951
+hard: accuracy_1=0.5428571428571428
+medium: accuracy_2=0.6410256410256411
+easy: accuracy_3=0.46534653465346537
+(hard+easy): accuracy_5=0.49707602339181284
+
+WIG的准确率:
+overall: accuracy=0.5461847389558233
+hard: accuracy_1=0.5714285714285714
+medium: accuracy_2=0.6282051282051282
+easy: accuracy_3=0.46534653465346537
+(hard+easy): accuracy_5=0.5087719298245614
+
+SMV的准确率:
+overall: accuracy=0.46184738955823296
+hard: accuracy_1=0.4142857142857143
+medium: accuracy_2=0.5512820512820513
+easy: accuracy_3=0.42574257425742573
+(hard+easy): accuracy_5=0.42105263157894735
+
+NQC的准确率:
+overall: accuracy=0.4497991967871486
+hard: accuracy_1=0.38571428571428573
+medium: accuracy_2=0.5256410256410257
+easy: accuracy_3=0.43564356435643564
+(hard+easy): accuracy_5=0.4152046783625731
+
+C的准确率:
+overall: accuracy=0.5421686746987951
+hard: accuracy_1=0.5714285714285714
+medium: accuracy_2=0.6282051282051282
+easy: accuracy_3=0.45544554455445546
+(hard+easy): accuracy_5=0.5029239766081871
+
+C2的准确率:
+overall: accuracy=0.5502008032128514
+hard: accuracy_1=0.5285714285714286
+medium: accuracy_2=0.6410256410256411
+easy: accuracy_3=0.49504950495049505
+(hard+easy): accuracy_5=0.5087719298245614
+
+C4的准确率:
+overall: accuracy=0.5180722891566265
+hard: accuracy_1=0.4714285714285714
+medium: accuracy_2=0.5769230769230769
+easy: accuracy_3=0.504950495049505
+(hard+easy): accuracy_5=0.49122807017543857
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: polyudp5
+支持向量机的准确率:
+overall: accuracy=0.5257142857142857
+hard: accuracy=0.9531443466927337
+medium: accuracy=0.02
+easy: accuracy=0.14278221778221778
+(hard+easy): accuracy=0.7164219114219115
+
+SD2的准确率:
+overall: accuracy=0.42570281124497994
+hard: accuracy_1=0.3203125
+medium: accuracy_2=0.5970149253731343
+easy: accuracy_3=0.46296296296296297
+(hard+easy): accuracy_5=0.3626373626373626
+
+WIG的准确率:
+overall: accuracy=0.37349397590361444
+hard: accuracy_1=0.296875
+medium: accuracy_2=0.5074626865671642
+easy: accuracy_3=0.3888888888888889
+(hard+easy): accuracy_5=0.3241758241758242
+
+SMV的准确率:
+overall: accuracy=0.40160642570281124
+hard: accuracy_1=0.3203125
+medium: accuracy_2=0.43283582089552236
+easy: accuracy_3=0.5555555555555556
+(hard+easy): accuracy_5=0.3901098901098901
+
+NQC的准确率:
+overall: accuracy=0.3855421686746988
+hard: accuracy_1=0.3046875
+medium: accuracy_2=0.40298507462686567
+easy: accuracy_3=0.5555555555555556
+(hard+easy): accuracy_5=0.3791208791208791
+
+C的准确率:
+overall: accuracy=0.3815261044176707
+hard: accuracy_1=0.3046875
+medium: accuracy_2=0.4925373134328358
+easy: accuracy_3=0.42592592592592593
+(hard+easy): accuracy_5=0.34065934065934067
+
+C2的准确率:
+overall: accuracy=0.40562248995983935
+hard: accuracy_1=0.328125
+medium: accuracy_2=0.43283582089552236
+easy: accuracy_3=0.5555555555555556
+(hard+easy): accuracy_5=0.3956043956043956
+
+C4的准确率:
+overall: accuracy=0.42168674698795183
+hard: accuracy_1=0.3359375
+medium: accuracy_2=0.44776119402985076
+easy: accuracy_3=0.5925925925925926
+(hard+easy): accuracy_5=0.41208791208791207
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: SABIR04BA
+支持向量机的准确率:
+overall: accuracy=0.5343673469387755
+hard: accuracy=0.6093434343434343
+medium: accuracy=0.48735294117647054
+easy: accuracy=0.47519230769230775
+(hard+easy): accuracy=0.5580936876216762
+
+SD2的准确率:
+overall: accuracy=0.5060240963855421
+hard: accuracy_1=0.42105263157894735
+medium: accuracy_2=0.5952380952380952
+easy: accuracy_3=0.5142857142857142
+(hard+easy): accuracy_5=0.46060606060606063
+
+WIG的准确率:
+overall: accuracy=0.5020080321285141
+hard: accuracy_1=0.43157894736842106
+medium: accuracy_2=0.5952380952380952
+easy: accuracy_3=0.4857142857142857
+(hard+easy): accuracy_5=0.45454545454545453
+
+SMV的准确率:
+overall: accuracy=0.5421686746987951
+hard: accuracy_1=0.4631578947368421
+medium: accuracy_2=0.6309523809523809
+easy: accuracy_3=0.5428571428571428
+(hard+easy): accuracy_5=0.49696969696969695
+
+NQC的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.47368421052631576
+medium: accuracy_2=0.6190476190476191
+easy: accuracy_3=0.5285714285714286
+(hard+easy): accuracy_5=0.49696969696969695
+
+C的准确率:
+overall: accuracy=0.5220883534136547
+hard: accuracy_1=0.45263157894736844
+medium: accuracy_2=0.6190476190476191
+easy: accuracy_3=0.5
+(hard+easy): accuracy_5=0.4727272727272727
+
+C2的准确率:
+overall: accuracy=0.5502008032128514
+hard: accuracy_1=0.4631578947368421
+medium: accuracy_2=0.6547619047619048
+easy: accuracy_3=0.5428571428571428
+(hard+easy): accuracy_5=0.49696969696969695
+
+C4的准确率:
+overall: accuracy=0.5261044176706827
+hard: accuracy_1=0.4631578947368421
+medium: accuracy_2=0.6071428571428571
+easy: accuracy_3=0.5142857142857142
+(hard+easy): accuracy_5=0.48484848484848486
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: uogRobLWR10
+支持向量机的准确率:
+overall: accuracy=0.517795918367347
+hard: accuracy=0.6961779448621555
+medium: accuracy=0.0
+easy: accuracy=0.6872056953979151
+(hard+easy): accuracy=0.6936218752008225
+
+SD2的准确率:
+overall: accuracy=0.4538152610441767
+hard: accuracy_1=0.40625
+medium: accuracy_2=0.5555555555555556
+easy: accuracy_3=0.43333333333333335
+(hard+easy): accuracy_5=0.41935483870967744
+
+WIG的准确率:
+overall: accuracy=0.4819277108433735
+hard: accuracy_1=0.4270833333333333
+medium: accuracy_2=0.6190476190476191
+easy: accuracy_3=0.4444444444444444
+(hard+easy): accuracy_5=0.43548387096774194
+
+SMV的准确率:
+overall: accuracy=0.4979919678714859
+hard: accuracy_1=0.4479166666666667
+medium: accuracy_2=0.5714285714285714
+easy: accuracy_3=0.5
+(hard+easy): accuracy_5=0.4731182795698925
+
+NQC的准确率:
+overall: accuracy=0.4939759036144578
+hard: accuracy_1=0.4479166666666667
+medium: accuracy_2=0.5555555555555556
+easy: accuracy_3=0.5
+(hard+easy): accuracy_5=0.4731182795698925
+
+C的准确率:
+overall: accuracy=0.4738955823293173
+hard: accuracy_1=0.4270833333333333
+medium: accuracy_2=0.6031746031746031
+easy: accuracy_3=0.43333333333333335
+(hard+easy): accuracy_5=0.43010752688172044
+
+C2的准确率:
+overall: accuracy=0.5140562248995983
+hard: accuracy_1=0.4479166666666667
+medium: accuracy_2=0.6349206349206349
+easy: accuracy_3=0.5
+(hard+easy): accuracy_5=0.4731182795698925
+
+C4的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.4583333333333333
+medium: accuracy_2=0.6825396825396826
+easy: accuracy_3=0.5222222222222223
+(hard+easy): accuracy_5=0.489247311827957
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: vtumlong436
+支持向量机的准确率:
+overall: accuracy=0.5299591836734694
+hard: accuracy=0.7763305322128852
+medium: accuracy=0.2815151515151515
+easy: accuracy=0.5796245421245422
+(hard+easy): accuracy=0.6844322344322344
+
+SD2的准确率:
+overall: accuracy=0.4578313253012048
+hard: accuracy_1=0.42168674698795183
+medium: accuracy_2=0.5340909090909091
+easy: accuracy_3=0.41025641025641024
+(hard+easy): accuracy_5=0.4161490683229814
+
+WIG的准确率:
+overall: accuracy=0.4859437751004016
+hard: accuracy_1=0.42168674698795183
+medium: accuracy_2=0.5227272727272727
+easy: accuracy_3=0.5128205128205128
+(hard+easy): accuracy_5=0.4658385093167702
+
+SMV的准确率:
+overall: accuracy=0.5100401606425703
+hard: accuracy_1=0.46987951807228917
+medium: accuracy_2=0.5340909090909091
+easy: accuracy_3=0.5256410256410257
+(hard+easy): accuracy_5=0.4968944099378882
+
+NQC的准确率:
+overall: accuracy=0.5261044176706827
+hard: accuracy_1=0.4819277108433735
+medium: accuracy_2=0.5568181818181818
+easy: accuracy_3=0.5384615384615384
+(hard+easy): accuracy_5=0.5093167701863354
+
+C的准确率:
+overall: accuracy=0.4979919678714859
+hard: accuracy_1=0.4457831325301205
+medium: accuracy_2=0.5340909090909091
+easy: accuracy_3=0.5128205128205128
+(hard+easy): accuracy_5=0.4782608695652174
+
+C2的准确率:
+overall: accuracy=0.5020080321285141
+hard: accuracy_1=0.43373493975903615
+medium: accuracy_2=0.5340909090909091
+easy: accuracy_3=0.5384615384615384
+(hard+easy): accuracy_5=0.484472049689441
+
+C4的准确率:
+overall: accuracy=0.5020080321285141
+hard: accuracy_1=0.43373493975903615
+medium: accuracy_2=0.5340909090909091
+easy: accuracy_3=0.5384615384615384
+(hard+easy): accuracy_5=0.484472049689441
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..
+0、Organization: wdoqla1
+支持向量机的准确率:
+overall: accuracy=0.5020408163265306
+hard: accuracy=0.7234121535723366
+medium: accuracy=0.30158730158730157
+easy: accuracy=0.45475113122171945
+(hard+easy): accuracy=0.6048412698412697
+
+SD2的准确率:
+overall: accuracy=0.4939759036144578
+hard: accuracy_1=0.39603960396039606
+medium: accuracy_2=0.5679012345679012
+easy: accuracy_3=0.5522388059701493
+(hard+easy): accuracy_5=0.4583333333333333
+
+WIG的准确率:
+overall: accuracy=0.5020080321285141
+hard: accuracy_1=0.42574257425742573
+medium: accuracy_2=0.5925925925925926
+easy: accuracy_3=0.5074626865671642
+(hard+easy): accuracy_5=0.4583333333333333
+
+SMV的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.44554455445544555
+medium: accuracy_2=0.6172839506172839
+easy: accuracy_3=0.582089552238806
+(hard+easy): accuracy_5=0.5
+
+NQC的准确率:
+overall: accuracy=0.5301204819277109
+hard: accuracy_1=0.43564356435643564
+medium: accuracy_2=0.6049382716049383
+easy: accuracy_3=0.582089552238806
+(hard+easy): accuracy_5=0.49404761904761907
+
+C的准确率:
+overall: accuracy=0.4899598393574297
+hard: accuracy_1=0.40594059405940597
+medium: accuracy_2=0.5679012345679012
+easy: accuracy_3=0.5223880597014925
+(hard+easy): accuracy_5=0.4523809523809524
+
+C2的准确率:
+overall: accuracy=0.5261044176706827
+hard: accuracy_1=0.42574257425742573
+medium: accuracy_2=0.5925925925925926
+easy: accuracy_3=0.5970149253731343
+(hard+easy): accuracy_5=0.49404761904761907
+
+C4的准确率:
+overall: accuracy=0.5381526104417671
+hard: accuracy_1=0.44554455445544555
+medium: accuracy_2=0.6172839506172839
+easy: accuracy_3=0.582089552238806
+(hard+easy): accuracy_5=0.5
+计算SD2/WIG/SMV/NQC/C C2 C4的准确率,已完成..

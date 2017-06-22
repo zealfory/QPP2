@@ -175,6 +175,69 @@ public class ProcessSomething {
 		buffWriter.close();
 		System.out.println("整合8个文件的信息,形成output文件,已完成..");
 	}
+	
+	/**
+	 * 需提前确认2个input文件内部信息的顺序一致
+	 * by Zoey
+	 * @param input_classLabel 存放classLabel信息的文件
+	 * @param input1 存放特征值1的文件
+	 * @param input2 存放特征值2的文件
+	 * @param output 整合后的文件
+	 * @throws IOException 
+	 */
+	public static void combineData_2features(String input_classLabel,String input1,String input2,String output) throws IOException{
+		FileReader fileReader=null;
+		BufferedReader buffReader=null;
+		FileWriter fileWriter=null;
+		BufferedWriter buffWriter=null;
+		String tempLine=null;
+		String[] terms=null;
+		ArrayList<Heart_scale2> array_heart=new ArrayList<Heart_scale2>();
+		Heart_scale2 heart=null;
+		
+		//读取input_classLabel文件的信息,存入array_heart中
+		fileReader=new FileReader(input_classLabel);
+		buffReader=new BufferedReader(fileReader);
+		while((tempLine=buffReader.readLine())!=null){
+			terms=tempLine.split(" |\t");
+			heart=new Heart_scale2();
+			heart.setLabel(terms[5]);
+			array_heart.add(heart);
+		}
+		buffReader.close();
+		//读取input1文件的信息,存入array_heart中
+		int pointer=0;
+		fileReader=new FileReader(input1);
+		buffReader=new BufferedReader(fileReader);
+		while((tempLine=buffReader.readLine())!=null){
+			//获取array_heart数组中对应的对象
+			heart=array_heart.get(pointer++);
+			terms=tempLine.split(" |\t");
+			heart.setValue1(terms[3]);
+		}
+		buffReader.close();
+		//读取input2文件的信息,存入array_heart中
+		pointer=0;//pointer置为0
+		fileReader=new FileReader(input2);
+		buffReader=new BufferedReader(fileReader);
+		while((tempLine=buffReader.readLine())!=null){
+			//获取array_heart数组中对应的对象
+			heart=array_heart.get(pointer++);
+			terms=tempLine.split(" |\t");
+			heart.setValue2(terms[3]);
+		}
+		buffReader.close();
+		
+		//把array_heart中的信息存入output文件中
+		fileWriter=new FileWriter(output);
+		buffWriter=new BufferedWriter(fileWriter);
+		for(int i=0;i<array_heart.size();i++){
+			heart=array_heart.get(i);
+			buffWriter.write(heart.getTempLine());
+		}
+		buffWriter.close();
+		System.out.println("整合3个文件的信息,形成output文件,已完成..");
+	}
 	/**
 	 * 计算hard,medium,easy区间的准确率
 	 * @throws IOException 
@@ -331,7 +394,9 @@ public class ProcessSomething {
 		String input7="./"+packageName+"/c4Score."+runId;
 		
 		output="./"+packageName+"/heart_scale";
-		combineData(input_classLabel,input1,input2,input3,input4,input5,input6,input7,output);
+		//combineData(input_classLabel,input1,input2,input3,input4,input5,input6,input7,output);
+		//by Zoey
+		combineData_2features(input_classLabel,input1,input2,output);
 		
 		/*
 		String input_test="./"+packageName+"/heart_scale."+runId;
@@ -354,9 +419,10 @@ public class ProcessSomething {
 		
 		//把heart_scale中的信息存入array_info中
 		//
-		//临时进行了修改
-		//fileReader=new FileReader("./"+packageName+"/heart_scale");
-		fileReader=new FileReader("./"+packageName+"/heart2");
+		//临时进行了修改(Zoey)
+		fileReader=new FileReader("./"+packageName+"/heart_scale");
+		//by Zoey
+		//fileReader=new FileReader("./"+packageName+"/heart2");
 		//
 		//
 		
@@ -631,6 +697,47 @@ class Heart_scale{
 	public String getTempLine(){
 		String tempLine="";
 		tempLine=label+" "+index1+":"+value1+" "+index2+":"+value2+" "+index3+":"+value3+" "+index4+":"+value4+" "+index5+":"+value5+" "+index6+":"+value6+" "+index7+":"+value7+" \n";
+		return tempLine;
+	}
+
+}
+//by Zoey
+class Heart_scale2{
+	private String label;
+	private int index1;
+	private String value1;
+	private int index2;
+	private String value2;
+	
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public String getValue1() {
+		return value1;
+	}
+	public void setValue1(String value1) {
+		this.value1 = value1;
+	}
+	public String getValue2() {
+		return value2;
+	}
+	public void setValue2(String value2) {
+		this.value2 = value2;
+	}
+
+	
+	
+	public Heart_scale2(){
+		index1=1;
+		index2=2;
+
+	}
+	public String getTempLine(){
+		String tempLine="";
+		tempLine=label+" "+index1+":"+value1+" "+index2+":"+value2+" \n";
 		return tempLine;
 	}
 
