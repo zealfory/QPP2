@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * 注意：老师去掉了分子上的根号 by Zoey
  * 此预测方法的公式为:Math.sqrt(1/k*sum((score(d)^2)*(score(d)-u)^2))/score(D)/Math.sqrt(qlen),
  * 来自于SD2和WIG整合。
  * @author 1
@@ -67,7 +68,9 @@ public class C2 {
 		for(int i=0;i<k;i++){
 			sum=sum+Math.pow(score[i], 2)*Math.pow(score[i]-u, 2);
 		}
-		numerator=Math.sqrt(sum/k);
+		//by Zoey
+		//numerator=Math.sqrt(sum/k);
+		numerator=sum/k;
 		denom=scoreD*Math.sqrt(qlen);
 		return numerator/denom;
 	}
