@@ -18,10 +18,10 @@ public class TaskControl {
 		
 		//以每个文件夹为单位,生成5折heart_scale_train_x,heart_scale_test_x文件
 		//by Zoey
-		//generate_heart_scale_batch();
+		generate_heart_scale_batch();
 		
 		//by Zoey
-		generate_accuracy_batch();
+		//generate_accuracy_batch();
 		/*
 		//为每个组织产生对应的准确率信息
 		generate_accuracy_batch();
@@ -120,12 +120,12 @@ public class TaskControl {
 		//by zoey
 		//file=new File("./robustTrack2004");
 		//(by Zoey)
-		file=new File("./robustTrack2004_2features");
+		file=new File("./robustTrack2004_2features2");
 		
 		file_list=file.listFiles();
 		for(int i=0;i<file_list.length;i++){
 			//为每个子文件夹产生heart_scale_train_x,heart_scale_test_x文件
-			packageName="robustTrack2004_2features/"+file_list[i].getName();
+			packageName="robustTrack2004_2features2/"+file_list[i].getName();
 			runId=file_list[i].getName();
 			System.out.println("\n开始为"+packageName+"子文件夹产生5折heart_scale_train_x,heart_scale_test_x文件..");
 			generate_heart_scale(runId,packageName);
@@ -194,67 +194,67 @@ public class TaskControl {
 		String runId=null;
 		//by Zoey
 		//packageName="robustTrack2004/"+"apl04rsTDNfw";
-		packageName="robustTrack2004_2features/"+"apl04rsTDNfw";
+		packageName="robustTrack2004_2features2/"+"apl04rsTDNfw";
 		runId="apl04rsTDNfw";
 		generate_accuracy(runId,packageName);
 		//by Zoey
 		//packageName="robustTrack2004/"+"fub04TDNge";
-		packageName="robustTrack2004_2features/"+"fub04TDNge";
+		packageName="robustTrack2004_2features2/"+"fub04TDNge";
 		runId="fub04TDNge";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"humR04t5e1";
-		packageName="robustTrack2004_2features/"+"humR04t5e1";
+		packageName="robustTrack2004_2features2/"+"humR04t5e1";
 		runId="humR04t5e1";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"icl04pos2f";
-		packageName="robustTrack2004_2features/"+"icl04pos2f";
+		packageName="robustTrack2004_2features2/"+"icl04pos2f";
 		runId="icl04pos2f";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"JuruTitDes";
-		packageName="robustTrack2004_2features/"+"JuruTitDes";
+		packageName="robustTrack2004_2features2/"+"JuruTitDes";
 		runId="JuruTitDes";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"mpi04r07";
-		packageName="robustTrack2004_2features/"+"mpi04r07";
+		packageName="robustTrack2004_2features2/"+"mpi04r07";
 		runId="mpi04r07";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"NLPR04NcA";
-		packageName="robustTrack2004_2features/"+"NLPR04NcA";
+		packageName="robustTrack2004_2features2/"+"NLPR04NcA";
 		runId="NLPR04NcA";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"pircRB04td2";
-		packageName="robustTrack2004_2features/"+"pircRB04td2";
+		packageName="robustTrack2004_2features2/"+"pircRB04td2";
 		runId="pircRB04td2";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"polyudp5";
-		packageName="robustTrack2004_2features/"+"polyudp5";
+		packageName="robustTrack2004_2features2/"+"polyudp5";
 		runId="polyudp5";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"SABIR04BA";
-		packageName="robustTrack2004_2features/"+"SABIR04BA";
+		packageName="robustTrack2004_2features2/"+"SABIR04BA";
 		runId="SABIR04BA";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"uogRobLWR10";
-		packageName="robustTrack2004_2features/"+"uogRobLWR10";
+		packageName="robustTrack2004_2features2/"+"uogRobLWR10";
 		runId="uogRobLWR10";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"vtumlong436";
-		packageName="robustTrack2004_2features/"+"vtumlong436";
+		packageName="robustTrack2004_2features2/"+"vtumlong436";
 		runId="vtumlong436";
 		generate_accuracy(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"wdoqla1";
-		packageName="robustTrack2004_2features/"+"wdoqla1";
+		packageName="robustTrack2004_2features2/"+"wdoqla1";
 		runId="wdoqla1";
 		generate_accuracy(runId,packageName);
 		

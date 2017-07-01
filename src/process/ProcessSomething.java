@@ -396,7 +396,7 @@ public class ProcessSomething {
 		output="./"+packageName+"/heart_scale";
 		//combineData(input_classLabel,input1,input2,input3,input4,input5,input6,input7,output);
 		//by Zoey
-		combineData_2features(input_classLabel,input1,input2,output);
+		combineData_2features(input_classLabel,input2,input4,output);
 		
 		/*
 		String input_test="./"+packageName+"/heart_scale."+runId;
