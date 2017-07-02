@@ -18,10 +18,10 @@ public class TaskControl {
 		
 		//以每个文件夹为单位,生成5折heart_scale_train_x,heart_scale_test_x文件
 		//by Zoey
-		generate_heart_scale_batch();
+		//generate_heart_scale_batch();
 		
 		//by Zoey
-		//generate_accuracy_batch();
+		generate_accuracy_batch();
 		/*
 		//为每个组织产生对应的准确率信息
 		generate_accuracy_batch();

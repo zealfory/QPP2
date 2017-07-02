@@ -73,15 +73,19 @@ public class Predictor_compare {
 		//robustTrack2004的可验证topic数量为249
 		int round=0;
 		round=249;
+		//by Zoey
 		//分析summary文件,获取average Precision信息
-		processSummary(runId,packageName,round);
+		//processSummary(runId,packageName,round);
 		
 		//根据input文件,运行预测算法,得到预测信息
-		processPrediction(runId,packageName);
+		//by Zoey
+		//processPrediction(runId,packageName);
 		
 		
 		//预测值与AP的pearson kendall spearman系数:
 		System.out.println("预测值与AP的pearson kendall spearman系数:\n");
+		//by Zoey
+		packageName=packageName+"/"+runId;
 		//运行pearson算法
 		try {
 			//sD2对应的pearson
@@ -98,9 +102,10 @@ public class Predictor_compare {
 			//c2对应的pearson
 			correlationCoefficient.PearsonAnalysis.loadScoreAndComputePearson("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c3对应的pearson
-			correlationCoefficient.PearsonAnalysis.loadScoreAndComputePearson("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//by Zoey
+			//correlationCoefficient.PearsonAnalysis.loadScoreAndComputePearson("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c4对应的pearson
-			correlationCoefficient.PearsonAnalysis.loadScoreAndComputePearson("./"+packageName+"/c4Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.PearsonAnalysis.loadScoreAndComputePearson("./"+packageName+"/c4Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -122,9 +127,9 @@ public class Predictor_compare {
 			//c2对应的kendall
 			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c3对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c4对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c4Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c4Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -146,9 +151,9 @@ public class Predictor_compare {
 			//c2对应的spearman
 			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c3对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c4对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c4Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c4Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -169,7 +174,9 @@ public class Predictor_compare {
 		int n=0;
 		
 		runIdFile="runId.txt";
-		packageName="robustTrack2004/13org_best_map_runs";
+		//by Zoey
+		//packageName="robustTrack2004/13org_best_map_runs";
+		packageName="robustTrack2004_2features2";
 		fileReader=new FileReader("./"+packageName+"/"+runIdFile);
 		buffReader=new BufferedReader(fileReader);
 		

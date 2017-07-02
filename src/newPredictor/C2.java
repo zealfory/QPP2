@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /**
  * 注意：老师去掉了分子上的根号 by Zoey
- * 此预测方法的公式为:Math.sqrt(1/k*sum((score(d)^2)*(score(d)-u)^2))/score(D)/Math.sqrt(qlen),
+ * 此预测方法的公式为:Math.sqrt(1/k*sum((score(d)^2)*(score(d)-u)^2))/score(D),
  * 来自于SD2和WIG整合。
  * @author 1
  *
