@@ -21,7 +21,7 @@ public class TaskControl {
 		//generate_heart_scale_batch();
 		
 		//by Zoey
-		generate_accuracy_batch();
+		generate_precision_recall_batch();
 		/*
 		//为每个组织产生对应的准确率信息
 		generate_accuracy_batch();
@@ -138,7 +138,7 @@ public class TaskControl {
 	 * @throws IOException 
 	 * 
 	 */
-	public static void generate_accuracy(String runId,String packageName) throws IOException{
+	public static void generate_precision_recall(String runId,String packageName) throws IOException{
 		//输出org
 		System.out.println("0、Organization: "+packageName.split("/")[1]);
 		//计算hard,medium,easy区间的准确率
@@ -147,40 +147,59 @@ public class TaskControl {
 		String input_test=null;
 		String input_predict=null;
 		//计算heart_scale_test_0的准确率
-		double[] accu_0=null;
+		double[] precision_0=null,recall_0=null;
 		input_test="./"+packageName+"/heart_scale_test_0";
 		input_predict="./"+packageName+"/heart_scale_test_0.predict";
-		accu_0=ProcessSomething.computeAccuracy(input_test,input_predict);
+		precision_0=ProcessSomething.computePrecision(input_test,input_predict);
+		//by Zoey
+		recall_0=ProcessSomething.computeRecall(input_test,input_predict);
 		//计算heart_scale_test_1的准确率
-		double[] accu_1=null;
+		double[] precision_1=null,recall_1=null;
 		input_test="./"+packageName+"/heart_scale_test_1";
 		input_predict="./"+packageName+"/heart_scale_test_1.predict";
-		accu_1=ProcessSomething.computeAccuracy(input_test,input_predict);
+		precision_1=ProcessSomething.computePrecision(input_test,input_predict);
+		recall_1=ProcessSomething.computeRecall(input_test,input_predict);
 		//计算heart_scale_test_2的准确率
-		double[] accu_2=null;
+		double[] precision_2=null,recall_2=null;
 		input_test="./"+packageName+"/heart_scale_test_2";
 		input_predict="./"+packageName+"/heart_scale_test_2.predict";
-		accu_2=ProcessSomething.computeAccuracy(input_test,input_predict);
+		precision_2=ProcessSomething.computePrecision(input_test,input_predict);
+		recall_2=ProcessSomething.computeRecall(input_test,input_predict);
 		//计算heart_scale_test_3的准确率
-		double[] accu_3=null;
+		double[] precision_3=null,recall_3=null;
 		input_test="./"+packageName+"/heart_scale_test_3";
 		input_predict="./"+packageName+"/heart_scale_test_3.predict";
-		accu_3=ProcessSomething.computeAccuracy(input_test,input_predict);
+		precision_3=ProcessSomething.computePrecision(input_test,input_predict);
+		recall_3=ProcessSomething.computeRecall(input_test,input_predict);
 		//计算heart_scale_test_4的准确率
-		double[] accu_4=null;
+		double[] precision_4=null,recall_4=null;
 		input_test="./"+packageName+"/heart_scale_test_4";
 		input_predict="./"+packageName+"/heart_scale_test_4.predict";
-		accu_4=ProcessSomething.computeAccuracy(input_test,input_predict);
+		precision_4=ProcessSomething.computePrecision(input_test,input_predict);
+		recall_4=ProcessSomething.computeRecall(input_test,input_predict);
 		
 		//计算5折下的平均准确率
-		double[] accu_5=null;//存储5折下的平均准确率
-		accu_5=new double[5];
+		double[] precision_5=null;//存储5折下的平均准确率
+		precision_5=new double[5];
 		for(int i=0;i<5;i++){
-			accu_5[i]=(accu_0[i]+accu_1[i]+accu_2[i]+accu_3[i]+accu_4[i])/5;
+			precision_5[i]=(precision_0[i]+precision_1[i]+precision_2[i]+precision_3[i]+precision_4[i])/5;
 		}
-		System.out.println("overall: accuracy="+accu_5[0]+"\nhard: accuracy="+accu_5[1]+"\nmedium: accuracy="+accu_5[2]+
-							"\neasy: accuracy="+accu_5[3]+"\n(hard+easy): accuracy="+accu_5[4]);
-		
+		//by Zoey
+		//System.out.println("overall: precision="+precision_5[0]+"\nhard: precision="+precision_5[1]+"\nmedium: precision="+precision_5[2]+
+							//"\neasy: precision="+precision_5[3]+"\n(hard+easy): precision="+precision_5[4]);
+		System.out.println("hard: precision="+precision_5[1]+"\neasy: precision="+precision_5[3]);
+		System.out.println();
+		//计算5折下的平均召回率
+		double[] recall_5=null;//存储5折下的平均准确率
+		recall_5=new double[5];
+		for(int i=0;i<5;i++){
+			recall_5[i]=(recall_0[i]+recall_1[i]+recall_2[i]+recall_3[i]+recall_4[i])/5;
+		}
+		//by Zoey
+		//System.out.println("overall: recall="+recall_5[0]+"\nhard: recall="+recall_5[1]+"\nmedium: recall="+recall_5[2]+
+								//	"\neasy: recall="+recall_5[3]+"\n(hard+easy): recall="+recall_5[4]);
+		System.out.println("hard: recall="+recall_5[1]+"\neasy: recall="+recall_5[3]);
+		System.out.println("---------------------------------------");
 		//baseline: 计算SD2/WIG/SMV/NQC C C2 C4的准确率
 		//by Zoey
 		//ProcessBaseline.getAccuracy(runId,packageName);
@@ -189,74 +208,74 @@ public class TaskControl {
 	 * @throws IOException 
 	 * 
 	 */
-	public static void generate_accuracy_batch() throws IOException{
+	public static void generate_precision_recall_batch() throws IOException{
 		String packageName=null;
 		String runId=null;
 		//by Zoey
 		//packageName="robustTrack2004/"+"apl04rsTDNfw";
 		packageName="robustTrack2004_2features2/"+"apl04rsTDNfw";
 		runId="apl04rsTDNfw";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//by Zoey
 		//packageName="robustTrack2004/"+"fub04TDNge";
 		packageName="robustTrack2004_2features2/"+"fub04TDNge";
 		runId="fub04TDNge";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"humR04t5e1";
 		packageName="robustTrack2004_2features2/"+"humR04t5e1";
 		runId="humR04t5e1";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"icl04pos2f";
 		packageName="robustTrack2004_2features2/"+"icl04pos2f";
 		runId="icl04pos2f";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"JuruTitDes";
 		packageName="robustTrack2004_2features2/"+"JuruTitDes";
 		runId="JuruTitDes";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"mpi04r07";
 		packageName="robustTrack2004_2features2/"+"mpi04r07";
 		runId="mpi04r07";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"NLPR04NcA";
 		packageName="robustTrack2004_2features2/"+"NLPR04NcA";
 		runId="NLPR04NcA";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"pircRB04td2";
 		packageName="robustTrack2004_2features2/"+"pircRB04td2";
 		runId="pircRB04td2";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"polyudp5";
 		packageName="robustTrack2004_2features2/"+"polyudp5";
 		runId="polyudp5";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"SABIR04BA";
 		packageName="robustTrack2004_2features2/"+"SABIR04BA";
 		runId="SABIR04BA";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"uogRobLWR10";
 		packageName="robustTrack2004_2features2/"+"uogRobLWR10";
 		runId="uogRobLWR10";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"vtumlong436";
 		packageName="robustTrack2004_2features2/"+"vtumlong436";
 		runId="vtumlong436";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		//
 		//packageName="robustTrack2004/"+"wdoqla1";
 		packageName="robustTrack2004_2features2/"+"wdoqla1";
 		runId="wdoqla1";
-		generate_accuracy(runId,packageName);
+		generate_precision_recall(runId,packageName);
 		
 	}
 

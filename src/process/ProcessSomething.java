@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author 1
+ * @author Zoey
  *
  */
 public class ProcessSomething {
@@ -178,7 +178,7 @@ public class ProcessSomething {
 	
 	/**
 	 * 需提前确认2个input文件内部信息的顺序一致
-	 * by Zoey
+	 * @author Zoey
 	 * @param input_classLabel 存放classLabel信息的文件
 	 * @param input1 存放特征值1的文件
 	 * @param input2 存放特征值2的文件
@@ -242,7 +242,7 @@ public class ProcessSomething {
 	 * 计算hard,medium,easy区间的准确率
 	 * @throws IOException 
 	 */
-	public static double[] computeAccuracy(String input_test,String input_predict) throws IOException{
+	public static double[] computePrecision(String input_test,String input_predict) throws IOException{
 		FileReader fileReader=null;
 		BufferedReader buffReader=null;
 		String[] terms=null;
@@ -280,45 +280,133 @@ public class ProcessSomething {
 		for(int i=0;i<array_info.size();i++){
 			info=array_info.get(i);
 			terms=info.toString().split(" |\t");
-			if(terms[0].equalsIgnoreCase("1")){
+			if(terms[1].equalsIgnoreCase("1")){
 				lable_1++;
 				if(terms[1].equalsIgnoreCase(terms[0])) lable_1_matched++;
 			}
-			if(terms[0].equalsIgnoreCase("2")){
+			if(terms[1].equalsIgnoreCase("2")){
 				lable_2++;
 				if(terms[1].equalsIgnoreCase(terms[0])) lable_2_matched++;
 			}
-			if(terms[0].equalsIgnoreCase("3")){
+			if(terms[1].equalsIgnoreCase("3")){
 				lable_3++;
 				if(terms[1].equalsIgnoreCase(terms[0])) lable_3_matched++;
 			}
 		}
 		//
-		double accuracy_1=0;
-		double accuracy_2=0;
-		double accuracy_3=0;
-		accuracy_1=(double)lable_1_matched/lable_1;
-		accuracy_2=(double)lable_2_matched/lable_2;
-		accuracy_3=(double)lable_3_matched/lable_3;
+		double precision_1=0;
+		double precision_2=0;
+		double precision_3=0;
+		precision_1=(double)lable_1_matched/lable_1;
+		precision_2=(double)lable_2_matched/lable_2;
+		precision_3=(double)lable_3_matched/lable_3;
 		//计算整体的准确率
-		double accuracy_4=(double)(lable_1_matched+lable_2_matched+lable_3_matched)/(lable_1+lable_2+lable_3);
+		double precision_4=(double)(lable_1_matched+lable_2_matched+lable_3_matched)/(lable_1+lable_2+lable_3);
 		//System.out.println("overall: accuracy="+accuracy_4);
 		//System.out.println("hard: accuracy_1="+accuracy_1+"\nmedium: accuracy_2="+accuracy_2+"\neasy: accuracy_3="+accuracy_3);
 		//计算(hard+easy)这部分的准确率
-		double accuracy_5=0;
-		accuracy_5=(double)(lable_1_matched+lable_3_matched)/(lable_1+lable_3);
+		double precision_5=0;
+		precision_5=(double)(lable_1_matched+lable_3_matched)/(lable_1+lable_3);
 		//System.out.println("(hard+easy): accuracy_5="+accuracy_5);
 		
 		//把准确率存入accuracy数组中
-		double[] accuracy=null;
-		accuracy=new double[5];
-		accuracy[0]=accuracy_4;
-		accuracy[1]=accuracy_1;
-		accuracy[2]=accuracy_2;
-		accuracy[3]=accuracy_3;
-		accuracy[4]=accuracy_5;
-		return accuracy;
+		double[] precision=null;
+		precision=new double[5];
+		precision[0]=precision_4;
+		precision[1]=precision_1;
+		precision[2]=precision_2;
+		precision[3]=precision_3;
+		precision[4]=precision_5;
+		return precision;
 	}
+	
+	/**
+	 * 计算hard easy类别召回率
+	 * @throws IOException
+	 * @author Zoey
+	 */
+	public static double[] computeRecall(String input_test,String input_predict) throws IOException{
+		FileReader fileReader=null;
+		BufferedReader buffReader=null;
+		String[] terms=null;
+		String tempLine=null;
+		//array_info用于存储input_test和input_predict中的信息
+		ArrayList<StringBuffer> array_info=new ArrayList<StringBuffer>();
+		StringBuffer info=null;
+		int lable1=0;//input_test文件中classLable为lable_1的行数
+		int lable1_matched=0;//input_predict文件和input_test匹配的信息中lable_1的数量
+		int lable2=0;
+		int lable2_matched=0;
+		int lable3=0;
+		int lable3_matched=0;
+		
+		//获取input_test的classLable信息
+		fileReader=new FileReader(input_test);
+		buffReader=new BufferedReader(fileReader);
+		
+		while((tempLine=buffReader.readLine())!=null){
+			terms=tempLine.split(" |\t");
+			info=new StringBuffer(terms[0]);
+			array_info.add(info);
+		}
+		buffReader.close();
+		//获取input_predict文件中的classLable信息
+		fileReader=new FileReader(input_predict);
+		buffReader=new BufferedReader(fileReader);
+		int pointer=0;
+		while((tempLine=buffReader.readLine())!=null){
+			info=array_info.get(pointer++);
+			info.append("\t"+tempLine.trim());
+		}
+		buffReader.close();
+		
+		//计算召回率
+		for(int i=0;i<array_info.size();i++){
+			info=array_info.get(i);
+			terms=info.toString().split(" |\t");
+			
+			if(terms[0].equalsIgnoreCase("1")){
+				lable1++;
+				if(terms[1].equalsIgnoreCase(terms[0])) lable1_matched++;
+			}
+			if(terms[0].equalsIgnoreCase("2")){
+				lable2++;
+				if(terms[1].equalsIgnoreCase(terms[0])) lable2_matched++;
+			}
+			if(terms[0].equalsIgnoreCase("3")){
+				lable3++;
+				if(terms[1].equalsIgnoreCase(terms[0])) lable3_matched++;
+			}
+			
+		}
+		//
+		double recall_1=0;
+		double recall_2=0;
+		double recall_3=0;
+		recall_1=(double)lable1_matched/lable1;
+		recall_2=(double)lable2_matched/lable2;
+		recall_3=(double)lable3_matched/lable3;
+		//计算整体的准确率
+		double recall_4=(double)(lable1_matched+lable2_matched+lable3_matched)/(lable1+lable2+lable3);
+		//System.out.println("overall: accuracy="+accuracy_4);
+		//System.out.println("hard: accuracy_1="+accuracy_1+"\nmedium: accuracy_2="+accuracy_2+"\neasy: accuracy_3="+accuracy_3);
+		//计算(hard+easy)这部分的准确率
+		double recall_5=0;
+		recall_5=(double)(lable1_matched+lable3_matched)/(lable1+lable3);
+		//System.out.println("(hard+easy): accuracy_5="+accuracy_5);
+		
+		//把准确率存入accuracy数组中
+		double[] recall=null;
+		recall=new double[5];
+		recall[0]=recall_4;
+		recall[1]=recall_1;
+		recall[2]=recall_2;
+		recall[3]=recall_3;
+		recall[4]=recall_5;
+		return recall;
+	}
+		
+	
 	/**
 	 * 产生heart_scale.runId文件
 	 * @param runId

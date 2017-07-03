@@ -331,8 +331,9 @@ public class Process_baseline_2 {
 	/**
 	 * 针对一个heart_scale_test_x_regression文件,计算准确率信息
 	 * @throws IOException 
+	 * @author Zoey（已更改为Precision）
 	 */
-	public static double[][] compute_accuracy(String fileName,String packageName) throws IOException{
+	public static double[][] compute_precision(String fileName,String packageName) throws IOException{
 		//将input文件存入classLabel数组
 		BufferedReader buffReader=null;
 		String input=null;
@@ -384,7 +385,116 @@ public class Process_baseline_2 {
 		 * (hard+easy)
 		 * 
 		 */
-		double[][] accuracy=new double[5][7];
+		double[][] precision=new double[5][7];
+		
+		//预测算法共有7个,k_method为预测算法的编号(从0开始编号)
+		for(int k_method=0;k_method<7;k_method++){
+			for(int i=0;i<classLabel.length;i++){
+				if(classLabel[i][1+k_method]==1){
+					labe_1++;
+					if(classLabel[i][0]==classLabel[i][1+k_method]) labe_1_matched++;
+				}
+				if(classLabel[i][1+k_method]==2){
+					labe_2++;
+					if(classLabel[i][0]==classLabel[i][1+k_method]) labe_2_matched++;
+				}
+				if(classLabel[i][1+k_method]==3){
+					labe_3++;
+					if(classLabel[i][0]==classLabel[i][1+k_method]) labe_3_matched++;
+				}
+			}
+			//计算准确率
+			precision[0][k_method]=(double)(labe_1_matched+labe_2_matched+labe_3_matched)/(labe_1+labe_2+labe_3);
+			precision[1][k_method]=(double)labe_1_matched/labe_1;
+			precision[2][k_method]=(double)labe_2_matched/labe_2;
+			precision[3][k_method]=(double)labe_3_matched/labe_3;
+			precision[4][k_method]=(double)(labe_1_matched+labe_3_matched)/(labe_1+labe_3);
+			//重置labe_x,labe_x_matched变量
+			labe_1=labe_1_matched=0;
+			labe_2=labe_2_matched=0;
+			labe_3=labe_3_matched=0;
+		}
+		
+		/**************************/
+		//将accuracy数组中的数据存入文件中
+		BufferedWriter buffWriter=null;
+		
+		input="./"+packageName+"/"+fileName+"_precision";
+		buffWriter=new BufferedWriter(new FileWriter(input));
+		for(int i=0;i<precision.length;i++){
+			tempLine="";//重置tempLine
+			for(int j=0;j<precision[i].length;j++){
+				tempLine=tempLine+precision[i][j]+"\t";
+			}
+			//去除tempLine末尾的\t
+			tempLine=tempLine.trim();
+			buffWriter.write(tempLine+"\n");
+		}
+		buffWriter.close();
+		System.out.println("针对一个heart_scale_test_x_regression文件,计算准确率信息并存入文件,已完成..");
+		
+		//返回accuracy数组
+		return precision;
+	}
+	
+	/**
+	 * 针对一个heart_scale_test_x_regression文件,计算召回率信息
+	 * @throws IOException
+	 * @author Zoey 
+	 */
+	public static double[][] compute_recall(String fileName,String packageName) throws IOException{
+		//将input文件存入classLabel数组
+		BufferedReader buffReader=null;
+		String input=null;
+		String tempLine=null;
+		String[] terms=null;
+		int[] terms2=null;
+		/**
+		 * classLabel数组的格式为:
+		 * standard sD2 wIG sMV nQC c c2 c4
+		 *     x     x   x   x   x  x  x  x
+		 *     x     x   x   ...
+		 * 
+		 */
+		int[][] classLabel=null;
+		ArrayList<int[]> array_classLabel=new ArrayList<int[]>();
+		
+		input="./"+packageName+"/"+fileName;
+		buffReader=new BufferedReader(new FileReader(input));
+		while((tempLine=buffReader.readLine())!=null){
+			terms=tempLine.split(" |\t");
+			terms2=new int[terms.length];
+			for(int i=0;i<terms.length;i++){
+				terms2[i]=Integer.parseInt(terms[i]);
+			}
+			array_classLabel.add(terms2);
+		}
+		buffReader.close();
+		//将array_classLabel中的数据存入classLabel数组中
+		classLabel=new int[array_classLabel.size()][];
+		for(int i=0;i<array_classLabel.size();i++){
+			classLabel[i]=array_classLabel.get(i);
+		}
+		
+		/**************************/
+		//计算每个预测方法的类别预测准确率,并存入accuracy数组中,预测方法共有7个
+		int labe_1=0;
+		int labe_1_matched=0;
+		int labe_2=0;
+		int labe_2_matched=0;
+		int labe_3=0;
+		int labe_3_matched=0;
+		/**
+		 * accuracy数组的格式为:<br>
+		 *         sD2 wIG sMV nQC c c2 C4
+		 * overall  x   x   x   x  x x  x
+		 * hard     x   x   x   ...
+		 * medium
+		 * easy
+		 * (hard+easy)
+		 * 
+		 */
+		double[][] recall=new double[5][7];
 		
 		//预测算法共有7个,k_method为预测算法的编号(从0开始编号)
 		for(int k_method=0;k_method<7;k_method++){
@@ -403,11 +513,11 @@ public class Process_baseline_2 {
 				}
 			}
 			//计算准确率
-			accuracy[0][k_method]=(double)(labe_1_matched+labe_2_matched+labe_3_matched)/(labe_1+labe_2+labe_3);
-			accuracy[1][k_method]=(double)labe_1_matched/labe_1;
-			accuracy[2][k_method]=(double)labe_2_matched/labe_2;
-			accuracy[3][k_method]=(double)labe_3_matched/labe_3;
-			accuracy[4][k_method]=(double)(labe_1_matched+labe_3_matched)/(labe_1+labe_3);
+			recall[0][k_method]=(double)(labe_1_matched+labe_2_matched+labe_3_matched)/(labe_1+labe_2+labe_3);
+			recall[1][k_method]=(double)labe_1_matched/labe_1;
+			recall[2][k_method]=(double)labe_2_matched/labe_2;
+			recall[3][k_method]=(double)labe_3_matched/labe_3;
+			recall[4][k_method]=(double)(labe_1_matched+labe_3_matched)/(labe_1+labe_3);
 			//重置labe_x,labe_x_matched变量
 			labe_1=labe_1_matched=0;
 			labe_2=labe_2_matched=0;
@@ -415,32 +525,35 @@ public class Process_baseline_2 {
 		}
 		
 		/**************************/
-		//将accuracy数组中的数据存入文件中
+		//将recall数组中的数据存入文件中
 		BufferedWriter buffWriter=null;
 		
-		input="./"+packageName+"/"+fileName+"_accuracy";
+		input="./"+packageName+"/"+fileName+"_recall";
 		buffWriter=new BufferedWriter(new FileWriter(input));
-		for(int i=0;i<accuracy.length;i++){
+		for(int i=0;i<recall.length;i++){
 			tempLine="";//重置tempLine
-			for(int j=0;j<accuracy[i].length;j++){
-				tempLine=tempLine+accuracy[i][j]+"\t";
+			for(int j=0;j<recall[i].length;j++){
+				if(((Double)recall[i][j]).toString().equals("NaN"))
+					recall[i][j]=0.0;
+				tempLine=tempLine+recall[i][j]+"\t";
 			}
 			//去除tempLine末尾的\t
 			tempLine=tempLine.trim();
 			buffWriter.write(tempLine+"\n");
 		}
 		buffWriter.close();
-		System.out.println("针对一个heart_scale_test_x_regression文件,计算准确率信息并存入文件,已完成..");
+		System.out.println("针对一个heart_scale_test_x_regression文件,计算召回率信息并存入文件,已完成..");
 		
-		//返回accuracy数组
-		return accuracy;
+		//返回recall数组
+		return recall;
 	}
 	/**
 	 * 批量产生heart_scale_test_x_regression文件对应的准确率信息<br>
 	 * @throws IOException 
+	 * @author Zoey (已更改为Precision）
 	 * 
 	 */
-	public static void compute_accuracy_batch() throws IOException{
+	public static void compute_precision_batch() throws IOException{
 		//批量产生准确率文件,并计算预测方法在该运行结果上的平均准确率信息
 		BufferedReader buffReader=null;
 		String tempLine=null;
@@ -448,9 +561,9 @@ public class Process_baseline_2 {
 		String runId=null;
 		String packageName=null;
 		String fileName=null;
-		double[][][] accu=null;//存放一个运行结果对应的准确率
-		ArrayList<double[][]> array_accu=null;
-		double[][] accuracy=null;
+		double[][][] prec=null;//存放一个运行结果对应的准确率
+		ArrayList<double[][]> array_prec=null;
+		double[][] precision=null;
 		
 		//遍历每个运行结果,针对每个运行结果,计算平均准确率信息并存入文件。
 		input="./robustTrack2004/runId.txt";
@@ -458,41 +571,41 @@ public class Process_baseline_2 {
 		while((tempLine=buffReader.readLine())!=null){
 			runId=tempLine.split("\\.")[1];
 			packageName="robustTrack2004/"+runId;
-			array_accu=new ArrayList<double[][]>();//创建array_accu对象
+			array_prec=new ArrayList<double[][]>();//创建array_accu对象
 			//每个runId下有5个heart_scale_test_x_regression文件,相应地产生5组准确率信息
 			for(int i=0;i<5;i++){
 				fileName="heart_scale_test_"+i+"_regression";
 				//针对一个heart_scale_test_x_regression文件,计算准确率信息
-				accuracy=compute_accuracy(fileName,packageName);
-				array_accu.add(accuracy);
+				precision=compute_precision(fileName,packageName);
+				array_prec.add(precision);
 			}
 			//将array_accu中的数据存入accu数组中,其中accu[array_accu.size()]存放平均值
-			accu=new double[array_accu.size()+1][][];
-			for(int i=0;i<array_accu.size();i++){
-				accu[i]=array_accu.get(i);
+			prec=new double[array_prec.size()+1][][];
+			for(int i=0;i<array_prec.size();i++){
+				prec[i]=array_prec.get(i);
 			}
 			
 			/************************************/
 			//创建accu[accu.length-1]并给其赋值
-			accu[accu.length-1]=new double[accu[0].length][accu[0][0].length];
-			for(int i=0;i<accu.length-1;i++){
-				for(int j=0;j<accu[i].length;j++){
-					for(int k=0;k<accu[i][j].length;k++){
+			prec[prec.length-1]=new double[prec[0].length][prec[0][0].length];
+			for(int i=0;i<prec.length-1;i++){
+				for(int j=0;j<prec[i].length;j++){
+					for(int k=0;k<prec[i][j].length;k++){
 						//accu[accu.length-1][j][k]中存入平均值,这里提前乘以1.0/(accu.length-1)
-						accu[accu.length-1][j][k]+=accu[i][j][k]/(accu.length-1);
+						prec[prec.length-1][j][k]+=prec[i][j][k]/(prec.length-1);
 					}
 				}
 			}
 			//将accu[accu.length-1]存入文件中
 			BufferedWriter buffWriter=null;
-			input="./"+packageName+"/regression_accuracy";
+			input="./"+packageName+"/regression_precision";
 			buffWriter=new BufferedWriter(new FileWriter(input));
-			for(int i=0;i<accu[accu.length-1].length;i++){
+			for(int i=0;i<prec[prec.length-1].length;i++){
 				tempLine="";//置tempLine为空字符串
-				for(int j=0;j<accu[accu.length-1][i].length;j++){
+				for(int j=0;j<prec[prec.length-1][i].length;j++){
 					//tempLine=tempLine+accu[accu.length-1][i][j]+"\t";
 					//对于平均准确率,保留小数点后3位
-					tempLine=tempLine+String.format("%.3f",accu[accu.length-1][i][j])+"\t";
+					tempLine=tempLine+String.format("%.3f",prec[prec.length-1][i][j])+"\t";
 				}
 				//去除tempLine末尾的\t
 				tempLine=tempLine.trim();
@@ -501,7 +614,76 @@ public class Process_baseline_2 {
 			buffWriter.close();
 		}
 		buffReader.close();
-		System.out.println("批量产生heart_scale_test_x_regression文件对应的准确率信息,已完成..");
+		System.out.println("批量产生heart_scale_test_x_regression文件对应的precision信息,已完成..");
+	}
+	
+	/**
+	 * 批量产生heart_scale_test_x_regression文件对应的召回率信息<br>
+	 * @throws IOException 
+	 * 
+	 */
+	public static void compute_recall_batch() throws IOException{
+		//批量产生准确率文件,并计算预测方法在该运行结果上的平均准确率信息
+		BufferedReader buffReader=null;
+		String tempLine=null;
+		String input=null;
+		String runId=null;
+		String packageName=null;
+		String fileName=null;
+		double[][][] reca=null;//存放一个运行结果对应的准确率
+		ArrayList<double[][]> array_reca=null;
+		double[][] recall=null;
+		
+		//遍历每个运行结果,针对每个运行结果,计算平均准确率信息并存入文件。
+		input="./robustTrack2004/runId.txt";
+		buffReader=new BufferedReader(new FileReader(input));
+		while((tempLine=buffReader.readLine())!=null){
+			runId=tempLine.split("\\.")[1];
+			packageName="robustTrack2004/"+runId;
+			array_reca=new ArrayList<double[][]>();//创建array_accu对象
+			//每个runId下有5个heart_scale_test_x_regression文件,相应地产生5组准确率信息
+			for(int i=0;i<5;i++){
+				fileName="heart_scale_test_"+i+"_regression";
+				//针对一个heart_scale_test_x_regression文件,计算准确率信息
+				recall=compute_recall(fileName,packageName);
+				array_reca.add(recall);
+			}
+			//将array_accu中的数据存入accu数组中,其中accu[array_accu.size()]存放平均值
+			reca=new double[array_reca.size()+1][][];
+			for(int i=0;i<array_reca.size();i++){
+				reca[i]=array_reca.get(i);
+			}
+			
+			/************************************/
+			//创建accu[accu.length-1]并给其赋值
+			reca[reca.length-1]=new double[reca[0].length][reca[0][0].length];
+			for(int i=0;i<reca.length-1;i++){
+				for(int j=0;j<reca[i].length;j++){
+					for(int k=0;k<reca[i][j].length;k++){
+						//accu[accu.length-1][j][k]中存入平均值,这里提前乘以1.0/(accu.length-1)
+						reca[reca.length-1][j][k]+=reca[i][j][k]/(reca.length-1);
+					}
+				}
+			}
+			//将accu[accu.length-1]存入文件中
+			BufferedWriter buffWriter=null;
+			input="./"+packageName+"/regression_recall";
+			buffWriter=new BufferedWriter(new FileWriter(input));
+			for(int i=0;i<reca[reca.length-1].length;i++){
+				tempLine="";//置tempLine为空字符串
+				for(int j=0;j<reca[reca.length-1][i].length;j++){
+					//tempLine=tempLine+accu[accu.length-1][i][j]+"\t";
+					//对于平均准确率,保留小数点后3位
+					tempLine=tempLine+String.format("%.3f",reca[reca.length-1][i][j])+"\t";
+				}
+				//去除tempLine末尾的\t
+				tempLine=tempLine.trim();
+				buffWriter.write(tempLine+"\n");
+			}
+			buffWriter.close();
+		}
+		buffReader.close();
+		System.out.println("批量产生heart_scale_test_x_regression文件对应的召回率信息,已完成..");
 	}
 	
 	/**
@@ -698,13 +880,14 @@ public class Process_baseline_2 {
 		ArrayRun=load_linear(input);
 		
 		//批量产生每个heart_scale_test_x文件对应的预测类别,并存入文件
-		generate_prediction_batch();
+		//generate_prediction_batch();
 		
-		//批量产生heart_scale_test_x_regression文件对应的准确率信息
-		compute_accuracy_batch();
+		//批量产生heart_scale_test_x_regression文件对应的Precision信息
+		compute_precision_batch();
 		
 		//批量产生heart_scale_test_x_regression_AP_value文件对应的绝对误差信息
-		compute_absoluteError_batch();		
+		//compute_absoluteError_batch();
+		compute_recall_batch();
 		
 		
 	}
