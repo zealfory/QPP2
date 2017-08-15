@@ -98,7 +98,7 @@ public class SD2 {
 					preQueryId = terms[0];
 				// queryId相同,存入score
 				if (preQueryId.equalsIgnoreCase(terms[0])) {
-					score = Double.parseDouble(terms[4]);
+					score = Double.parseDouble("".equals(terms[4])?"0.00":terms[4]);
 					arrayList.add(score);
 				}
 				// queryId不同,计算preQueryId的SDScore,写入文件,清空arrayList信息,处理terms信息

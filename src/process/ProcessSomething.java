@@ -17,10 +17,18 @@ public class ProcessSomething {
 	
 	public static void processSummary(String runId,String packageName,int round){
 		//处理summary文件
+		if(runId.equals("uogTBQEL")){
+			predictor.SummaryAnalysis.round = round;
+			predictor.SummaryAnalysis.extractAveragePrecisionForTB("./"+packageName+"/summary."+runId, "./"+packageName+"/map."+runId);
+			predictor.SummaryAnalysis.setTermSize(5);
+			predictor.SummaryAnalysis.normalizeAveragePrecision("./"+packageName+"/map."+runId, "./"+packageName+"/map.normalized."+runId);
+		}
+		else{
 		predictor.SummaryAnalysis.round = round;
 		predictor.SummaryAnalysis.extractAveragePrecision("./"+packageName+"/summary."+runId, "./"+packageName+"/map."+runId);
 		predictor.SummaryAnalysis.setTermSize(5);
 		predictor.SummaryAnalysis.normalizeAveragePrecision("./"+packageName+"/map."+runId, "./"+packageName+"/map.normalized."+runId);
+		}
 	}
 	/**
 	 * 给map.normalized.runId的每条queryId加上类别标签,加在末尾
@@ -646,9 +654,12 @@ public class ProcessSomething {
 		String packageName;
 		int round=0;
 		
-		runId="apl04rsTw";
+		/*runId="apl04rsTw";
 		packageName="robustTrack2004";
-		round=249;
+		round=249;*/
+		runId="fub01be2";
+		packageName="six_runs\\fub01be2";
+		round=50;
 		
 		//分析summary文件,获取average Precision信息
 		processSummary(runId,packageName,round);

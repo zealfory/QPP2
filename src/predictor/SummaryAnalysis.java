@@ -22,6 +22,7 @@ public class SummaryAnalysis {
 		SummaryAnalysis.termSize = termSize;
 	}
 
+	
 	public static void extractAveragePrecision(String input, String output) {
 		FileReader fileReader = null;
 		LineNumberReader lineNumberReader = null;
@@ -58,6 +59,40 @@ public class SummaryAnalysis {
 		}
 	}
 
+	//by Zoey
+	//处理TB级Summary
+	public static void extractAveragePrecisionForTB(String input, String output) {
+		FileReader fileReader = null;
+		LineNumberReader lineNumberReader = null;
+		FileWriter fileWriter = null;
+		String tempLine = null;
+		int times=0;//记录循环的次数
+		try {
+			fileReader = new FileReader(input);
+			lineNumberReader = new LineNumberReader(fileReader);
+			fileWriter = new FileWriter(output, false);
+			
+			while((tempLine=lineNumberReader.readLine())!=null){
+				if(times<round&&tempLine.startsWith("map")){
+					fileWriter.write("Queryid uogTBQEL "+tempLine+"\n");
+					times++;
+				}
+			}
+			System.out.println("average Precision data have been extracted..");
+		} catch (IOException e) {
+			System.err.println("读取数据出错!");
+			e.printStackTrace();
+		} finally {
+			try {
+				fileWriter.close();
+				fileReader.close();
+			} catch (IOException e) {
+				System.err.println("关闭IO文件流出错!");
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public static void showResult(String input) throws IOException {
 		FileReader fileReader = null;
 		BufferedReader bufferedReader = null;
