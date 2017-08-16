@@ -32,7 +32,7 @@ public class C2 {
 	public void setQueryMap(HashMap<String, String> queryMap) {
 		this.queryMap = queryMap;
 	}
-	//用100代替length
+	
 	public double mean(double[] score){
 		int length=score.length;
 		double sum=0;
@@ -41,14 +41,14 @@ public class C2 {
 		return sum/length;
 	}
 	
-	
+	//前k个文档的均值
 	public double uMean(double[] score){
 		double uMean=0;
 		double sum=0;
-		for(int i=0;i<20;i++){
+		for(int i=0;i<k;i++){
 			sum=sum+score[i];
 		}
-		uMean=sum/20;
+		uMean=sum/k;
 		return uMean;
 	}
 	/**
