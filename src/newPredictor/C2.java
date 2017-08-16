@@ -32,6 +32,7 @@ public class C2 {
 	public void setQueryMap(HashMap<String, String> queryMap) {
 		this.queryMap = queryMap;
 	}
+	//ÓÃ100´úÌælength
 	public double mean(double[] score){
 		int length=score.length;
 		double sum=0;
@@ -39,13 +40,15 @@ public class C2 {
 			sum=sum+score[i];
 		return sum/length;
 	}
+	
+	
 	public double uMean(double[] score){
 		double uMean=0;
 		double sum=0;
-		for(int i=0;i<k;i++){
+		for(int i=0;i<20;i++){
 			sum=sum+score[i];
 		}
-		uMean=sum/k;
+		uMean=sum/20;
 		return uMean;
 	}
 	/**
@@ -66,7 +69,8 @@ public class C2 {
 		}
 
 		for(int i=0;i<k;i++){
-			sum=sum+Math.pow(score[i], 2)*Math.pow(score[i]-u, 2);
+			//sum=sum+Math.pow(score[i], 2)*Math.pow(score[i]-u, 2);
+			sum=sum+score[i]*Math.pow(score[i]-u, 2);
 		}
 		//by Zoey
 		//numerator=Math.sqrt(sum/k);

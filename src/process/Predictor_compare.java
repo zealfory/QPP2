@@ -40,6 +40,12 @@ public class Predictor_compare {
 			predictorNQC.setK(1000);//把predictorNQC的k设为100
 			predictorNQC.getNQCScores("./"+packageName+"/input."+runId, "./"+packageName+"/nQCScore."+runId);
 			System.out.println("根据input计算每个query的NQC值,并将NQCScore存入文件,已完成..");
+			
+			//计算C2
+			newPredictor.C2 newPredictorC2=new newPredictor.C2();
+			newPredictorC2.setK(1000);//截断参数
+			newPredictorC2.setQueryMap(null);
+			newPredictorC2.getC2Scores("./"+packageName+"/input."+runId,"./"+packageName+"/c2Score."+runId);
 		}
 		else{
 		// 计算SD
@@ -58,6 +64,12 @@ public class Predictor_compare {
 		predictorNQC.setK(100);//把predictorNQC的k设为100
 		predictorNQC.getNQCScores("./"+packageName+"/input."+runId, "./"+packageName+"/nQCScore."+runId);
 		System.out.println("根据input计算每个query的NQC值,并将NQCScore存入文件,已完成..");
+		
+		//计算C2
+		newPredictor.C2 newPredictorC2=new newPredictor.C2();
+		newPredictorC2.setK(100);//截断参数
+		newPredictorC2.setQueryMap(null);
+		newPredictorC2.getC2Scores("./"+packageName+"/input."+runId,"./"+packageName+"/c2Score."+runId);
 		}
 		
 		// 计算SD2
@@ -82,11 +94,7 @@ public class Predictor_compare {
 		newPredictorC.setAlpha(0.5);//SD_2和WIG的平衡参数
 		newPredictorC.getCScores("./"+packageName+"/input."+runId,"./"+packageName+"/cScore."+runId);
 		
-		//计算C2
-		newPredictor.C2 newPredictorC2=new newPredictor.C2();
-		newPredictorC2.setK(100);//截断参数
-		newPredictorC2.setQueryMap(null);
-		newPredictorC2.getC2Scores("./"+packageName+"/input."+runId,"./"+packageName+"/c2Score."+runId);
+		
 		
 		//计算C3
 		newPredictor.C3 newPredictorC3=new newPredictor.C3();
