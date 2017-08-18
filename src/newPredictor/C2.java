@@ -71,6 +71,7 @@ public class C2 {
 		for(int i=0;i<k;i++){
 			//sum=sum+Math.pow(score[i], 2)*Math.pow(score[i]-u, 2);
 			sum=sum+score[i]*Math.pow(score[i]-u, 2);
+			
 		}
 		//by Zoey
 		//numerator=Math.sqrt(sum/k);

@@ -209,6 +209,11 @@ public class Kendall {
 		if(input1.contains("c2Score")) kendallResult="c2 "+kendallResult;
 		if(input1.contains("c3Score")) kendallResult="c3 "+kendallResult;
 		if(input1.contains("c4Score")) kendallResult="c4 "+kendallResult;
+		//add by Zoey
+		if(input1.contains("sD_WIGScore")) kendallResult="sD_WIG "+kendallResult;
+		if(input1.contains("sD_Multi_WIGScore")) kendallResult="sD_Multi_WIG "+kendallResult;
+		if(input1.contains("wIG_NQCScore")) kendallResult="wIG_NQC "+kendallResult;
+		if(input1.contains("wIG_Multi_NQCScore")) kendallResult="wIG_Multi_NQC "+kendallResult;
 		
 		System.out.println(kendallResult);
 	}

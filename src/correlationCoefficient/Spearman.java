@@ -161,6 +161,12 @@ public class Spearman {
 		if(input1.contains("c3Score")) result="c3 "+result;
 		if(input1.contains("c4Score")) result="c4 "+result;
 		
+		//add by Zoey
+		if(input1.contains("sD_WIGScore")) result="sD_WIG "+result;
+		if(input1.contains("sD_Multi_WIGScore")) result="sD_Multi_WIG "+result;
+		if(input1.contains("wIG_NQCScore")) result="wIG_NQC "+result;
+		if(input1.contains("wIG_Multi_NQCScore")) result="wIG_Multi_NQC "+result;
+		
 		System.out.println(result);
 	}
 	

@@ -22,11 +22,12 @@ public class Predictor_compare {
 		}
 	}
 
+	//add SD+WIG,SD*WIG,NQC+WIG,NQC*WIG by Zoey
 	public static void processPrediction(String runId,String packageName) throws IOException{
 		if(runId.equals("uogTBQEL")){
 			// 计算SD
 			predictor.SD predictorSD = new predictor.SD();
-			predictorSD.setK(1000);
+			predictorSD.setK(2500);
 			predictorSD.getSDScores("./" + packageName + "/input." + runId, "./"+ packageName + "/sDScore." + runId);
 			System.out.println("根据input计算每个query的SD值,并将SDScore存入文件,已完成..");
 			//计算SMV
@@ -37,7 +38,7 @@ public class Predictor_compare {
 			
 			//计算NQC
 			predictor.NQC predictorNQC=new predictor.NQC();
-			predictorNQC.setK(1000);//把predictorNQC的k设为100
+			predictorNQC.setK(2500);//把predictorNQC的k设为100
 			predictorNQC.getNQCScores("./"+packageName+"/input."+runId, "./"+packageName+"/nQCScore."+runId);
 			System.out.println("根据input计算每个query的NQC值,并将NQCScore存入文件,已完成..");
 			
@@ -50,7 +51,7 @@ public class Predictor_compare {
 		else{
 		// 计算SD
 		predictor.SD predictorSD = new predictor.SD();
-		predictorSD.setK(100);
+		predictorSD.setK(250);
 		predictorSD.getSDScores("./" + packageName + "/input." + runId, "./"+ packageName + "/sDScore." + runId);
 		System.out.println("根据input计算每个query的SD值,并将SDScore存入文件,已完成..");
 		//计算SMV
@@ -61,7 +62,7 @@ public class Predictor_compare {
 		
 		//计算NQC
 		predictor.NQC predictorNQC=new predictor.NQC();
-		predictorNQC.setK(100);//把predictorNQC的k设为100
+		predictorNQC.setK(250);//把predictorNQC的k设为100
 		predictorNQC.getNQCScores("./"+packageName+"/input."+runId, "./"+packageName+"/nQCScore."+runId);
 		System.out.println("根据input计算每个query的NQC值,并将NQCScore存入文件,已完成..");
 		
@@ -87,7 +88,20 @@ public class Predictor_compare {
 		predictorWIG.getWIGScores("./"+packageName+"/input."+runId,"./"+packageName+"/wIGScore."+runId);
 		System.out.println("根据input计算每个query的WIG值,并将WIGScore存入文件,已完成..");
 		
-
+		
+		//计算SD_WIG
+		newPredictor.SD_WIG teacherSD_WIG=new newPredictor.SD_WIG();
+		teacherSD_WIG.getSD_WIGScores("./"+packageName+"/input."+runId,"./"+packageName+"/sD_WIGScore."+runId);
+		//计算WIG_NQC
+		newPredictor.WIG_NQC teacherWIG_NQC=new newPredictor.WIG_NQC();
+		teacherWIG_NQC.getWIG_NQCScores("./"+packageName+"/input."+runId,"./"+packageName+"/wIG_NQCScore."+runId);
+				
+		//计算SD_Multi_WIG
+		newPredictor.SD_Multi_WIG teacherSD_Multi_WIG=new newPredictor.SD_Multi_WIG();
+		teacherSD_Multi_WIG.getSD_Multi_WIGScores("./"+packageName+"/input."+runId,"./"+packageName+"/sD_Multi_WIGScore."+runId);
+		//计算WIG_Multi_NQC
+		newPredictor.WIG_Multi_NQC teacherWIG_Multi_NQC=new newPredictor.WIG_Multi_NQC();
+		teacherWIG_Multi_NQC.getWIG_Multi_NQCScores("./"+packageName+"/input."+runId,"./"+packageName+"/wIG_Multi_NQCScore."+runId);
 		
 		//计算C
 		newPredictor.C newPredictorC=new newPredictor.C();
@@ -109,6 +123,7 @@ public class Predictor_compare {
 	}
 	/**
 	 * 可供getGeneratedResult_batch()方法调用
+	 * add SD+WIG,SD*WIG,NQC+WIG,NQC*WIG by Zoey
 	 * @param args
 	 * @throws IOException
 	 */
@@ -126,7 +141,7 @@ public class Predictor_compare {
 		//round=249;
 		//by Zoey
 		//分析summary文件,获取average Precision信息
-		processSummary(runId,packageName,round);
+		//processSummary(runId,packageName,round);
 		
 		//根据input文件,运行预测算法,得到预测信息
 		//by Zoey
@@ -135,8 +150,8 @@ public class Predictor_compare {
 		
 		//预测值与AP的pearson kendall spearman系数:
 		System.out.println("预测值与AP的pearson kendall spearman系数:\n");
-	
-		//运行pearson算法
+	//注释掉by Zoey
+	/*	//运行pearson算法
 		try {
 			//SD
 			correlationCoefficient.PearsonAnalysis.loadScoreAndComputePearson("./"+packageName+"/sDScore."+runId,"./"+packageName+"/map.normalized."+runId);
@@ -162,24 +177,35 @@ public class Predictor_compare {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		//运行kendall算法
 		try {
 			//SD
 			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sDScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//sD2对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sD2Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sD2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//wIG对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/wIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/wIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//sMV对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sMVScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sMVScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//nQC对应的kendall
 			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/nQCScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			
+			//sD_WIG对应的kendall
+			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sD_WIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//wIG_NQC对应的kendall
+			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/wIG_NQCScore."+runId,"./"+packageName+"/map.normalized."+runId);
+
+			//sD_Multi_WIG对应的kendall
+			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/sD_Multi_WIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//wIG_Multi_NQC对应的kendall
+			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/wIG_Multi_NQCScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			
+			
 			//c对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/cScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/cScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c2对应的kendall
-			correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c3对应的kendall
 			//correlationCoefficient.Kendall.loadScoreAndComputeKendall("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c4对应的kendall
@@ -194,18 +220,28 @@ public class Predictor_compare {
 			//SD
 			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sDScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//sD2对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sD2Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sD2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//wIG对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/wIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/wIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//sMV对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sMVScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sMVScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//nQC对应的spearman
 			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/nQCScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			
+			//sD_WIG对应的spearman
+			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sD_WIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//wIG_NQC对应的spearman
+			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/wIG_NQCScore."+runId,"./"+packageName+"/map.normalized."+runId);
+
+			//sD_Multi_WIG对应的spearman
+			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/sD_Multi_WIGScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//wIG_Multi_NQC对应的spearman
+			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/wIG_Multi_NQCScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			
 			//c对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/cScore."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/cScore."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c2对应的spearman
-			new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
+			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c2Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c3对应的spearman
 			//new correlationCoefficient.Spearman().loadScoreAndComputeSpearman("./"+packageName+"/c3Score."+runId,"./"+packageName+"/map.normalized."+runId);
 			//c4对应的spearman

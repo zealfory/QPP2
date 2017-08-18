@@ -46,6 +46,7 @@ public class SMV {
 		numerator=sum/k;
 		denom=mean(score);
 		return numerator/denom;
+		
 	}
 	/**
 	 * 在2016/06/02,作了修改,加入了k_original变量。
